@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://nfap0221s.github.io/",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "rm -rf node_modules/.cache && next build && touch out/.nojekyll",
     "deploy": "gh-pages -d out -f",
     "start": "next start",
