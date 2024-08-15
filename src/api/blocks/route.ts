@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const blockId = searchParams.get('id');
-  console.log('searchParamssearchParamssearchParams', searchParams)
+
   if (!blockId) {
     return NextResponse.json({ error: 'Missing blockId parameter' }, { status: 400 });
   }

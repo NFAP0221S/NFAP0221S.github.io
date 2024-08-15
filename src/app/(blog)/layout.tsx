@@ -6,7 +6,7 @@ import Footer from './_components/Footer';
 import _BreadCrumb from './_components/_BreadCrumb';
 import { _Sheet } from './_components/_Sheet';
 import { fetchCategories } from '@/services/categories';
-import { NotionDB } from '@/lib/notion';
+import { NotionDB } from '@/types/notion';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const categoryList: NotionDB[] = await fetchCategories()
