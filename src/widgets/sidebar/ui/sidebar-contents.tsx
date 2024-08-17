@@ -3,14 +3,14 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import React, { useEffect, useState } from 'react';
-import SubCategories from './SubCategories';
 import { NotionDB } from '@/shared/types/notion';
+import { SubCategories } from './sub-categories';
 
 interface Props {
   categoryList: NotionDB[]
 }
 
-export default function SidebarContent({ categoryList }: Props) {
+export const SidebarContent = ({ categoryList }: Props) => {
   
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
 

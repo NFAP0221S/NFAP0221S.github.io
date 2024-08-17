@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import DarkModeSwitch from './DarkModeSwitch';
+// import DarkModeSwitch from './DarkModeSwitch';
 import { useThemeClass } from '@/app/hooks';
 
-export default function Header() {
+export const Header = () => {
   const { WhiteBlack } = useThemeClass()
 
   return(
@@ -15,7 +15,7 @@ export default function Header() {
           <Link href="/" className='mr-4'>Home</Link>
           <Link href="/about" className='mr-4'>About</Link>
           {/* <Link href="/test" className="mr-4">Test</Link> */}
-          <DarkModeSwitch />
+          {/* <DarkModeSwitch /> */}
         </nav>
     </header>
   )

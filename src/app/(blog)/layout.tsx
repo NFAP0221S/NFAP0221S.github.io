@@ -3,10 +3,9 @@ import React from 'react';
 import Header from './_components/Header';
 import Sidebar from './_components/sidebar/Sidebar';
 import Footer from './_components/Footer';
-import _BreadCrumb from './_components/_BreadCrumb';
 import { _Sheet } from './_components/_Sheet';
 import { fetchCategories } from '@/services/categories';
-import { NotionDB } from '@/types/notion';
+import { NotionDB } from '@/shared/types/notion';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const categoryList: NotionDB[] = await fetchCategories()
@@ -25,7 +24,6 @@ export default async function Layout({ children }: { children: React.ReactNode }
                   <div className='p-2 md:hidden cursor-pointer'>
                     <_Sheet categoryList={categoryList} />
                   </div>
-                  <_BreadCrumb />
                 </div>
                 <main className="flex-1 overflow-y-auto" title='Posts'>
                   {children}

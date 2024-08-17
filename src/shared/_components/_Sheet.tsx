@@ -2,7 +2,7 @@
 
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
 import { MdDensityMedium as MenuButton} from "react-icons/md";
-import SidebarContent from "./sidebar/SidebarContents";
+// import SidebarContent from "./sidebar/SidebarContents";
 import { NotionDB } from "@/shared/types/notion";
 
 interface SidebarProps {

@@ -2,9 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-
 import ThemeProvider from "./provider/theme-provider";
-import ReactQueryProvider from "./provider/query-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +23,6 @@ export default function RootLayout({
         <Script src="https://cdn.tailwindcss.com" />
       </head>
       <body>
-        <ReactQueryProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -36,7 +33,6 @@ export default function RootLayout({
               {children}
             </main>
           </ThemeProvider>
-        </ReactQueryProvider>
       </body>
     </html>
   );
