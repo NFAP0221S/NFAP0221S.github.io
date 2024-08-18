@@ -1,17 +1,16 @@
-import '@/app/globals.css';
 import React from 'react';
-import Header from './_components/Header';
 import Sidebar from './_components/sidebar/Sidebar';
 import Footer from './_components/Footer';
 import { _Sheet } from './_components/_Sheet';
 import { fetchCategories } from '@/services/categories';
 import { NotionDB } from '@/shared/types/notion';
+import { Header } from '@/widgets/header';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const categoryList: NotionDB[] = await fetchCategories()
 
   return (
-    <div className='relative flex min-h-screen flex-col'>
+    <div className='relative flex min-h-screen flex-col font-sans text-sm'>
       <Header />
       <main className='flex-1'>
         <div className='boder-b'>

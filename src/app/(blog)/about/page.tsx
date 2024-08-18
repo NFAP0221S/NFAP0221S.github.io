@@ -1,5 +1,6 @@
+import { AboutPage } from "@/pages/about-page";
 
-export default function AboutPage() {
+const About = () => {
 
   return (
     <div>
@@ -7,3 +8,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+export default About

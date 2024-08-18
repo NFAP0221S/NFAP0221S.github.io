@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <title>My Blog</title>
-        <Script src="https://cdn.tailwindcss.com" />
+        {/* <Script src="https://cdn.tailwindcss.com" /> */}
       </head>
       <body>
           <ThemeProvider
