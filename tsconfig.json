@@ -21,6 +21,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["gpblog/next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "gpblog/src/lib/notion.ts"],
+  "include": [
+    "gpblog/next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "gpblog/src/lib/notion.ts"
+  ],
   "exclude": ["node_modules"]
 }

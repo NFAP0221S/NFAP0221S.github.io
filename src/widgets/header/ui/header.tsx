@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { useThemeClass } from '@/app/hooks';
-import DarkModeSwitch from '@/shared/_components/DarkModeSwitch';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import Link from "next/link";
+import { useThemeClass } from "@/app/hooks";
+import DarkModeSwitch from "@/shared/_components/DarkModeSwitch";
+import { Button } from "@/components/ui/button";
 
 export const Header = () => {
   const { WhiteBlack } = useThemeClass();
@@ -35,7 +35,7 @@ export const Header = () => {
           <Link href="/profile" className="text-gray-400">
             프로필
           </Link>
-          <Link href="https://github.com/your-github-profile" className="text-gray-400">
+          <Link href="https://github.com/NFAP0221S" className="text-gray-400">
             GitHub
           </Link>
           <DarkModeSwitch />
