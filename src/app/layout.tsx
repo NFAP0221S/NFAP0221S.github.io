@@ -2,8 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-// import ThemeProvider from "./provider/theme-provider";
-import {NextUIProvider} from '@nextui-org/react'
+import ThemeProvider from "./provider/theme-provider";
+import { Providers } from "./provider/next-ui-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,18 +24,18 @@ export default function RootLayout({
         {/* <Script src="https://cdn.tailwindcss.com" /> */}
       </head>
       <body>
-          {/* <ThemeProvider
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-            > */}
-            <NextUIProvider>
+            >
+            <Providers>
               <main className={inter.className}>
                 {children}
               </main>
-            </NextUIProvider>
-          {/* </ThemeProvider> */}
+            </Providers>
+          </ThemeProvider>
       </body>
     </html>
   );
