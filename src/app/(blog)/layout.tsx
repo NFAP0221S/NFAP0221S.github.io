@@ -4,14 +4,15 @@ import Footer from './_components/Footer';
 import { _Sheet } from './_components/_Sheet';
 import { fetchCategories } from '@/services/categories';
 import { NotionDB } from '@/shared/types/notion';
-import { Header } from '@/widgets/header';
+import { Header, NtHeader } from '@/widgets/header';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const categoryList: NotionDB[] = await fetchCategories()
 
   return (
     <div className='relative flex min-h-screen flex-col font-sans text-sm'>
-      <Header />
+      {/* <Header /> */}
+      <NtHeader />
       <main className='flex-1'>
         <div className='boder-b'>
           <div className='container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10'>
