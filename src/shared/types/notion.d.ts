@@ -29,6 +29,7 @@ export interface NotionDBProperties {
 
 // 데이터베이스의 단일 항목을 나타내는 타입
 export interface NotionDB {
+  subCategories: any;
   id: string;
   properties: NotionDBProperties;
 }
