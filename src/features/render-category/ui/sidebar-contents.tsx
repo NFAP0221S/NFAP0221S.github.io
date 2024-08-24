@@ -4,13 +4,13 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import React, { useEffect, useState } from 'react';
 import { NotionDB } from '@/shared/types/notion';
-import { SubCategories } from './sub-categories';
+import AccordionUI from '@/shared/next-ui/accordion';
 
 interface Props {
   categoryList: NotionDB[]
 }
 
-export const SidebarContent = ({ categoryList }: Props) => {
+export function SidebarContent({ categoryList }: Props) {
   
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
 
@@ -35,36 +35,25 @@ export const SidebarContent = ({ categoryList }: Props) => {
     return allSubCategory.filter(sub => sub.properties.group.multi_select.some(group => group.name === mainGroup));
   };
 
+  // AccordionUI에 전달할 데이터 구성
+  const accordionItems = allMainCategory.map(main => {
+    const mainGroup = main.properties.group.multi_select[0].name;
+    const matchedSubCategory = getSubCategories(mainGroup);
+
+    return {
+      id: main.id,
+      title: main.properties.category.title[0].plain_text,
+      subTitles: matchedSubCategory.map(sub => ({
+        id: sub.id,
+        title: sub.properties.category.title[0].plain_text,
+      })),
+    };
+  });
+
   return (
     <ScrollArea>
       <div className="p-4">
-        {allMainCategory.map(main => {
-          const mainGroup = main.properties.group.multi_select[0].name;
-          const matchedSubCategory = getSubCategories(mainGroup);
-
-          return (
-            <React.Fragment key={main.id}>
-              <div className="text-md font-semibold mb-2" title='main_category'>
-                {main.properties.category.title[0].plain_text}
-              </div>
-              {matchedSubCategory.length > 0 && (
-                <div title='sub_category'>
-                  {matchedSubCategory.map(sub => (
-                    <React.Fragment key={sub.id}>
-                      <SubCategories 
-                        id={sub.id} 
-                        subCategory={sub.properties.category.title[0].plain_text} 
-                        selectedCategoryId={selectedCategoryId}
-                        onCategoryClick={handleCategoryClick}
-                      />
-                    </React.Fragment>
-                  ))}
-                </div>
-              )}
-              <Separator className="my-2" />
-            </React.Fragment>
-          );
-        })}
+        <AccordionUI items={accordionItems} />
       </div>
     </ScrollArea>
   );
