@@ -44,7 +44,8 @@ return (
     <div className="flex flex-1 flex-col md:flex-row">
       
       {/* Sidebar (왼쪽) */}
-      <aside className="w-full md:w-1/4 lg:w-1/5 p-4 bg-gray-50">
+      {/* <Sidebar categoryList={categoryList} /> */}
+      {/* <aside className="w-full md:w-1/4 lg:w-1/5 p-4 bg-gray-50">
         <div className="sticky top-4">
           <h2 className="text-lg font-semibold mb-4">Sidebar</h2>
           <ul>
@@ -59,19 +60,23 @@ return (
             </li>
           </ul>
         </div>
+      </aside> */}
+      <aside className="w-full md:w-1/4 lg:w-1/5 p-4">
+        <Sidebar categoryList={categoryList} />
       </aside>
 
       {/* Main Content Area (오른쪽) */}
-      <div className="flex-1 p-4">
+      <div className="flex-1 p-4 pt-0">
         {/* Header */}
-        <header className="mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
+        <NtHeader />
+        {/* <header className="mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
           <h1 className="text-xl font-semibold">Main Header</h1>
-        </header>
+        </header> */}
         
         {/* Main Content */}
-        <main className="p-4 bg-white rounded-lg shadow-md flex-1">
-          {children}
-        </main>
+        <main className="p-4 bg-white rounded-lg shadow-md flex-1" style={{ paddingBottom: '4rem' }}>
+            {children}
+          </main>
       </div>
     </div>
 

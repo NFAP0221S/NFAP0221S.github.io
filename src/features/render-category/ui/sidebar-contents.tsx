@@ -52,9 +52,9 @@ export function SidebarContent({ categoryList }: Props) {
 
   return (
     <ScrollArea>
-      <div className="p-4">
+      {/* <div className="p-4"> */}
         <AccordionUI items={accordionItems} />
-      </div>
+      {/* </div> */}
     </ScrollArea>
   );
 }
