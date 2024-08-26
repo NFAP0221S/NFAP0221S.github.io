@@ -1,9 +1,9 @@
 import {Button} from '@nextui-org/react'
 
-export default function ButtonUI() {
+export default function ButtonUI({ children }: { children: React.ReactNode }) {
   return (
-    <div>
-      <Button>Click me</Button>
-    </div>
+      <Button>
+        {children}
+      </Button>
   )
 }

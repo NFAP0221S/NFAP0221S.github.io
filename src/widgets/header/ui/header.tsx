@@ -1,46 +1,118 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { useThemeClass } from "@/app/hooks";
+import {
+  Navbar, 
+  NavbarBrand, 
+  NavbarContent, 
+  NavbarMenuToggle,
+  NavbarItem, 
+  NavbarMenu,
+  NavbarMenuItem,
+  Link, 
+  DropdownItem, 
+  DropdownTrigger, 
+  Dropdown, 
+  DropdownMenu, 
+  Avatar
+} from "@nextui-org/react";
 import DarkModeSwitch from "@/shared/_components/DarkModeSwitch";
-import { Button } from "@/components/ui/button";
 
 export const Header = () => {
-  const { WhiteBlack } = useThemeClass();
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const menuItems = [
+    "Profile",
+    "Dashboard",
+    "Activity",
+    "Analytics",
+    "System",
+    "Deploymes",
+    "My Settings",
+    "Team Settings",
+    "Help & Feedback",
+    "Log Out",
+  ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 transition-colors duration-500">
-      <div className="container p-4 px-6 max-w-screen-2xl flex items-center justify-between">
-        {/* 왼쪽: 사이트 이름과 네비게이션 */}
-        <div className="flex items-center">
-          <Link href="/" className="font-bold">
-            sol github pages
-          </Link>
-          <nav className="ml-6 flex space-x-4">
-            <Link href="/about" className="text-gray-400">
-              블로그
-            </Link>
-            <Link href="/work" className="text-gray-400">
-              포트폴리오
-            </Link>
-            <Link href="/quiz" className="text-gray-400">
-              JS
-            </Link>
-          </nav>
-        </div>
+    <Navbar
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+      </NavbarContent>
 
-        {/* 오른쪽: GitHub 및 프로필 링크 */}
-        <div className="flex items-center space-x-4">
-          <Link href="/profile" className="text-gray-400">
-            프로필
+      <NavbarBrand>
+        <p className="font-bold text-inherit">Hansol.dev</p>
+      </NavbarBrand>
+
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Blog
           </Link>
-          <Link href="https://github.com/NFAP0221S" className="text-gray-400">
-            GitHub
+        </NavbarItem>
+        <NavbarItem isActive>
+          <Link href="#" aria-current="page" color="secondary">
+            Work
           </Link>
-          <DarkModeSwitch />
-        </div>
-      </div>
-    </header>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Quiz  
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarContent as="div" justify="end">
+        <DarkModeSwitch />
+        <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform"
+              color="secondary"
+              name="Jason Hughes"
+              size="sm"
+              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            />
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat">
+            <DropdownItem key="profile" className="h-14 gap-2">
+              <p className="font-semibold">Signed in as</p>
+              <p className="font-semibold">zoey@example.com</p>
+            </DropdownItem>
+            <DropdownItem key="settings">My Settings</DropdownItem>
+            <DropdownItem key="team_settings">Team Settings</DropdownItem>
+            <DropdownItem key="analytics">Analytics</DropdownItem>
+            <DropdownItem key="system">System</DropdownItem>
+            <DropdownItem key="configurations">Configurations</DropdownItem>
+            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem key="logout" color="danger">
+              Log Out
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </NavbarContent>
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              className="w-full"
+              color={
+                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
+              }
+              href="#"
+              size="lg"
+            >
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+
+    </Navbar>
   );
 };
