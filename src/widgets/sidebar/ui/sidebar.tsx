@@ -2,6 +2,7 @@
 
 import { SidebarContent } from "@/features/render-category";
 import { NotionDB } from "@/shared/types/notion";
+import { ScrollShadow } from "@nextui-org/react";
 
 interface SidebarProps {
   categoryList : NotionDB[]
@@ -9,10 +10,11 @@ interface SidebarProps {
 
 export const Sidebar = ({categoryList}: SidebarProps) => {
 
-    return(
-      // <aside className={`fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 md:sticky md:block`}>
-      <div className={`fixed top-4 w-64 h-[calc(100vh-2rem)]`}>
+  return(
+      <div className={`fixed top-4 lg:w-1/5 h-[calc(100vh-2rem)]`}>
+        <ScrollShadow className="pr-4 h-full">
           <SidebarContent categoryList={categoryList} />
+        </ScrollShadow>
       </div>
-    )
+  )
 };

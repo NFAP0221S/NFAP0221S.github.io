@@ -1,7 +1,5 @@
 'use client'
 
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Separator } from '@/components/ui/separator';
 import React, { useEffect, useState } from 'react';
 import { NotionDB } from '@/shared/types/notion';
 import AccordionUI from '@/shared/next-ui/accordion';
@@ -12,20 +10,20 @@ interface Props {
 
 export function SidebarContent({ categoryList }: Props) {
   
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+  // const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
 
-  const handleCategoryClick = (id: string) => {
-    setSelectedCategoryId(id);
+  // const handleCategoryClick = (id: string) => {
+  //   setSelectedCategoryId(id);
     
-    const selectedSubCategory = categoryList.find(post => post.id === id);
-    const mainCategory = categoryList.find(post => 
-      post.properties.level.rich_text[0].plain_text === 'main' && 
-      selectedSubCategory?.properties.group.multi_select.some(group => 
-        post.properties.group.multi_select.some(mainGroup => mainGroup.name === group.name)
-      )
-    );
+  //   const selectedSubCategory = categoryList.find(post => post.id === id);
+  //   const mainCategory = categoryList.find(post => 
+  //     post.properties.level.rich_text[0].plain_text === 'main' && 
+  //     selectedSubCategory?.properties.group.multi_select.some(group => 
+  //       post.properties.group.multi_select.some(mainGroup => mainGroup.name === group.name)
+  //     )
+  //   );
 
-  };
+  // };
   
   // 메인 카테고리와 서브 카테고리로 각각 분할
   const allMainCategory = categoryList.filter(post => post.properties.level.rich_text[0].plain_text === 'main');
@@ -50,9 +48,5 @@ export function SidebarContent({ categoryList }: Props) {
     };
   });
 
-  return (
-    <ScrollArea className="h-full">
-        <AccordionUI items={accordionItems} />
-    </ScrollArea>
-  );
+  return <AccordionUI items={accordionItems} />;
 }

@@ -6,6 +6,7 @@ import { NotionDB } from '@/shared/types/notion';
 import { Header, NtHeader } from '@/widgets/header';
 import { Sidebar } from '@/widgets/sidebar';
 import { ScrollArea } from '@/shared/ui/scroll-area';
+import { ScrollShadow } from '@nextui-org/react';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const categoryList: NotionDB[] = await fetchCategories()
@@ -45,34 +46,14 @@ return (
     <div className="flex flex-1 flex-col md:flex-row">
       
       {/* Sidebar (왼쪽) */}
-      {/* <Sidebar categoryList={categoryList} /> */}
-      {/* <aside className="w-full md:w-1/4 lg:w-1/5 p-4 bg-gray-50">
-        <div className="sticky top-4">
-          <h2 className="text-lg font-semibold mb-4">Sidebar</h2>
-          <ul>
-            <li className="mb-2">
-              <a href="#" className="text-blue-500 hover:underline">Link 1</a>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="text-blue-500 hover:underline">Link 2</a>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="text-blue-500 hover:underline">Link 3</a>
-            </li>
-          </ul>
-        </div>
-      </aside> */}
-      <aside className="w-full md:w-1/4 lg:w-1/5 p-4">
-        <Sidebar categoryList={categoryList} />
+      <aside className="hidden lg:block w-full lg:w-1/5 ml-4">
+          <Sidebar categoryList={categoryList} />
       </aside>
 
       {/* Main Content Area (오른쪽) */}
-      <div className="flex-1 p-4 pt-0">
+      <div className="flex-1 p-4 pt-0 lg:pl-0">
         {/* Header */}
         <NtHeader />
-        {/* <header className="mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
-          <h1 className="text-xl font-semibold">Main Header</h1>
-        </header> */}
         
         {/* Main Content */}
         <main className="p-4 bg-white rounded-lg shadow-md flex-1" style={{ paddingBottom: '4rem' }}>
