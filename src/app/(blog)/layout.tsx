@@ -1,14 +1,9 @@
-import React from 'react';
-import Footer from './_components/Footer';
-import { _Sheet } from './_components/_Sheet';
 import { fetchCategories } from '@/services/categories';
 import { NotionDB } from '@/shared/types/notion';
 import { Header } from '@/widgets/header';
 import { Sidebar } from '@/widgets/sidebar';
-import { ScrollArea } from '@/shared/ui/scroll-area';
-import { ScrollShadow } from '@nextui-org/react';
-import Home from './page';
 import { MainPage } from '@/pages/main-page';
+import { Footer } from '@/widgets/footer';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const categoryList: NotionDB[] = await fetchCategories()
@@ -30,7 +25,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
       {/* Footer */}
       <FooterWrapper>
-        <p>© 리모델링 중...</p>
+        <Footer/>
       </FooterWrapper>
     </div>
   );

@@ -2,28 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { NotionDB } from '@/shared/types/notion';
-import AccordionUI from '@/shared/next-ui/accordion';
+import { Accordion, AccordionItem } from '@nextui-org/react';
 
 interface Props {
   categoryList: NotionDB[]
 }
 
-export function SidebarContent({ categoryList }: Props) {
-  
-  // const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
-
-  // const handleCategoryClick = (id: string) => {
-  //   setSelectedCategoryId(id);
-    
-  //   const selectedSubCategory = categoryList.find(post => post.id === id);
-  //   const mainCategory = categoryList.find(post => 
-  //     post.properties.level.rich_text[0].plain_text === 'main' && 
-  //     selectedSubCategory?.properties.group.multi_select.some(group => 
-  //       post.properties.group.multi_select.some(mainGroup => mainGroup.name === group.name)
-  //     )
-  //   );
-
-  // };
+export const SplitCategories = ({ categoryList }: Props) => {
   
   // 메인 카테고리와 서브 카테고리로 각각 분할
   const allMainCategory = categoryList.filter(post => post.properties.level.rich_text[0].plain_text === 'main');
@@ -47,6 +32,21 @@ export function SidebarContent({ categoryList }: Props) {
       })),
     };
   });
+  const defaultExpandedKeys = accordionItems.map((item) => item.id);
 
-  return <AccordionUI items={accordionItems} />;
+  return (
+    <Accordion selectionMode="multiple" defaultExpandedKeys={defaultExpandedKeys}>
+      {accordionItems.map((mainItem) => (
+        <AccordionItem key={mainItem.id} aria-label={mainItem.title} title={mainItem.title}>
+          <div className="pl-4">
+            {mainItem.subTitles.map((subItem) => (
+              <div key={subItem.id} className="pb-2">
+                {subItem.title}
+              </div>
+            ))}
+          </div>
+        </AccordionItem>
+      ))}
+    </Accordion>
+  );
 }
