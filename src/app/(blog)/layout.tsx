@@ -5,6 +5,7 @@ import { fetchCategories } from '@/services/categories';
 import { NotionDB } from '@/shared/types/notion';
 import { Header, NtHeader } from '@/widgets/header';
 import { Sidebar } from '@/widgets/sidebar';
+import { ScrollArea } from '@/shared/ui/scroll-area';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const categoryList: NotionDB[] = await fetchCategories()
@@ -75,8 +76,8 @@ return (
         
         {/* Main Content */}
         <main className="p-4 bg-white rounded-lg shadow-md flex-1" style={{ paddingBottom: '4rem' }}>
-            {children}
-          </main>
+          {children}
+        </main>
       </div>
     </div>
 
