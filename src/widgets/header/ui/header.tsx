@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 import {
   Navbar, 
   NavbarBrand, 
@@ -8,7 +8,7 @@ import {
   NavbarMenuToggle,
   NavbarItem, 
   NavbarMenu,
-  NavbarMenuItem,
+  // NavbarMenuItem,
   Link, 
   DropdownItem, 
   DropdownTrigger, 
@@ -17,29 +17,18 @@ import {
   Avatar
 } from "@nextui-org/react";
 import DarkModeSwitch from "@/shared/_components/DarkModeSwitch";
+import { SplitCategories } from "@/features/render-category";
+import { CatListProps } from "@/shared/types/component";
 
-export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deploymes",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
+export const Header = ({categoryList}: CatListProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Navbar
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
-      <NavbarContent className="sm:hidden" justify="start">
+      <NavbarContent className="lg:hidden" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
 
@@ -50,17 +39,17 @@ export const Header = () => {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
-            Blog
+            Github
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" aria-current="page" color="secondary">
-            Work
+            Profile
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#">
-            Quiz  
+            etc..  
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -97,20 +86,7 @@ export const Header = () => {
         </Dropdown>
       </NavbarContent>
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color={
-                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
-              }
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
+        <SplitCategories categoryList={categoryList} />
       </NavbarMenu>
 
     </Navbar>

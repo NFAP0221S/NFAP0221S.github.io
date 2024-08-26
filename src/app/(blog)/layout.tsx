@@ -18,7 +18,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
         </SidebarWrapper>
 
         <MainWrapper>
-          <Header />
+          <Header categoryList={categoryList} />
           <MainPage />
         </MainWrapper>
       </div>
