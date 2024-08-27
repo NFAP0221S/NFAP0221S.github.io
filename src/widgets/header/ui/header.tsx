@@ -14,7 +14,8 @@ import {
   DropdownTrigger, 
   Dropdown, 
   DropdownMenu, 
-  Avatar
+  Avatar,
+  Chip
 } from "@nextui-org/react";
 import DarkModeSwitch from "@/shared/_components/DarkModeSwitch";
 import { SplitCategories } from "@/features/render-category";
@@ -22,6 +23,7 @@ import { CatListProps } from "@/shared/types/component";
 
 export const Header = ({categoryList}: CatListProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const buildDate = process.env.NEXT_PUBLIC_BUILD_DATE || "xx.xx.xx";
 
   return (
     <Navbar
@@ -32,11 +34,12 @@ export const Header = ({categoryList}: CatListProps) => {
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
 
-      <NavbarBrand>
+      <NavbarBrand className="flex justify-start gap-4">
         <p className="font-bold text-inherit">Hansol.dev</p>
+        <Chip color="success" variant="dot">Build: {buildDate}</Chip>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      {/* <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
             Github
@@ -52,7 +55,7 @@ export const Header = ({categoryList}: CatListProps) => {
             etc..  
           </Link>
         </NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
 
       <NavbarContent as="div" justify="end">
         <DarkModeSwitch />
@@ -62,7 +65,7 @@ export const Header = ({categoryList}: CatListProps) => {
               isBordered
               as="button"
               className="transition-transform"
-              color="secondary"
+              color="success"
               name="Jason Hughes"
               size="sm"
               src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
@@ -70,18 +73,20 @@ export const Header = ({categoryList}: CatListProps) => {
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              {/* <p className="font-semibold">Signed in as</p> */}
+              {/* <p className="font-semibold">vawav11@gmail.com</p> */}
+              Lee HanSol
             </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem key="logout" color="danger">
+            <DropdownItem key="settings">vawav11@gmail.com</DropdownItem>
+            <DropdownItem key="settings">Frontend Jr</DropdownItem>
+            <DropdownItem key="settings">React</DropdownItem>
+            <DropdownItem key="settings">TS</DropdownItem>
+            {/* <DropdownItem key="system">System</DropdownItem> */}
+            {/* <DropdownItem key="configurations">Configurations</DropdownItem> */}
+            {/* <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem> */}
+            {/* <DropdownItem key="logout" color="danger">
               Log Out
-            </DropdownItem>
+            </DropdownItem> */}
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
