@@ -1,6 +1,6 @@
 'use client'
 
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
+import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
 interface CardProps {
   id: string
   title: string
@@ -16,23 +16,24 @@ export const PostCard = ({ id, title, date, blocks }: CardProps) => {
     return ( 
       <Card className="max-w-[400px]">
         <CardHeader className="flex gap-3">
-          <Image
-          alt="nextui logo"
-          height={40}
-          radius="sm"
-          src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-          width={40}
-          />
+          <Button
+            radius="md" 
+            className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+            size="sm"
+            isIconOnly={true}
+          >
+            {"->"}
+          </Button>
           <div className="flex flex-col">
-          <p className="text-md">{title}</p>
+          <p className="text-md line-clamp-1">{title}</p>
           <p className="text-small text-default-500">{dateSlcie}</p>
           </div>
         </CardHeader>
         <Divider/>
-        <CardBody>
-          {/* <p>Make beautiful websites regardless of your design experience.</p> */}
-          {/* <p>{shortText}</p> */}
-          <p>{text}</p>
+        <CardBody className="min-h-[72px]">
+          <p className="line-clamp-2">
+            {text}
+          </p>
         </CardBody>
         <Divider/>
         <CardFooter>
