@@ -2,7 +2,6 @@
 
 import { SplitCategories } from "@/features/render-category";
 import { CatListProps } from "@/shared/types/component";
-import { NotionDB } from "@/shared/types/notion";
 import { Button, ScrollShadow } from "@nextui-org/react";
 // import { SidebarHeader } from "./sidebar-header";
 

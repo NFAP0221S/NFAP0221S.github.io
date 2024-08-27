@@ -42,7 +42,7 @@ export const PostsPage = ({ id, initialBlocks, currentPage }: PostsBlocksProps) 
 
   return (
     <div>
-      <ul className="flex flex-wrap justify-center">
+      <ul className="flex flex-wrap justify-start">
         {paginatedBlocks.map((block: any) => (
           <React.Fragment key={block.id}>
             {block?.type === 'child_page' && (

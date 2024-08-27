@@ -19,11 +19,11 @@ export const PostPagination = ({ totalPages, currentPage, basePath }: Pagination
 
   return (
     <Pagination
-        total={totalPages}
-        initialPage={currentPage}
-        boundaries={3}
-        color="secondary"
-        onChange={handlePageChange}
-      />
+      total={totalPages}
+      initialPage={currentPage}
+      boundaries={3}
+      color="warning"
+      onChange={handlePageChange}
+    />
   );
 }

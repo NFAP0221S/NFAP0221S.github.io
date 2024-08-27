@@ -20,14 +20,16 @@ export default async function Layout({ children }: { children: React.ReactNode }
         <MainWrapper>
           <Header categoryList={categoryList} />
           {/* <MainPage /> */}
-          {children}
+          <main className="p-4 mb-4 h-5/6 rounded-lg shadow-md flex-1">
+            {children}
+          </main>
+          {/* Footer */}
+          <FooterWrapper>
+            <Footer/>
+          </FooterWrapper>
         </MainWrapper>
       </div>
 
-      {/* Footer */}
-      <FooterWrapper>
-        <Footer/>
-      </FooterWrapper>
     </div>
   );
 }
@@ -48,7 +50,7 @@ const MainWrapper = ({ children }: { children: React.ReactNode }) => {
 };
 const FooterWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <footer className="p-4 bg-gray-200 text-center">
+    <footer className="p-4 text-center">
       {children}
     </footer>
   );

@@ -24,14 +24,15 @@ export const PostCard = ({ id, title, date, blocks }: CardProps) => {
           width={40}
           />
           <div className="flex flex-col">
-          <p className="text-md">NextUI</p>
+          <p className="text-md">{title}</p>
           <p className="text-small text-default-500">{dateSlcie}</p>
           </div>
         </CardHeader>
         <Divider/>
         <CardBody>
           {/* <p>Make beautiful websites regardless of your design experience.</p> */}
-          <p>{title}</p>
+          {/* <p>{shortText}</p> */}
+          <p>{text}</p>
         </CardBody>
         <Divider/>
         <CardFooter>
