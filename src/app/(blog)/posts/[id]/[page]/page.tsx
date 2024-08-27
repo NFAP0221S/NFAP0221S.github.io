@@ -1,7 +1,7 @@
 import { getBlocks, getDatabase, getPage } from '@/lib/notion';
 import { notFound } from 'next/navigation';
 import React from 'react';
-import PostsBlocks from '@/app/(blog)/posts/component/PostsBlocks';
+import { PostsPage } from '@/pages/posts-page';
 
 // generateStaticParams 함수 추가
 export async function generateStaticParams() {
@@ -28,23 +28,18 @@ interface props {
   };
 }
 
-export default async function PostsPage({ params }: props) {
+export default async function Posts({ params }: props) {
   const { id, page } = params;
   const currentPage = parseInt(page, 10);
   
   const pageData: any = await getPage(id);
   const blocks: any = await getBlocks(id);
+  const postsProps = { id, initialBlocks: blocks, currentPage };
 
   if (!pageData || !blocks) {
     notFound();
   }
 
-  const postsProps = { id, initialBlocks: blocks, currentPage };
 
-
-  return (
-    <div>
-      <PostsBlocks {...postsProps}/>
-    </div>
-  );
+  return <PostsPage {...postsProps}/>;
 }

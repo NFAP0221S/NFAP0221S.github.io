@@ -62,7 +62,7 @@ export const SplitCategories = ({ categoryList }: Props) => {
               // <div key={subItem.id} className="pb-2">
               //   {subItem.title}
               // </div>
-              <div className="pb-2">
+              <div key={subItem.id} className="pb-2">
                 <Link 
                   href={`/posts/${subItem.id}/1`}
                   // className={`text-md ${isSelected ? 'text-blue-500' : 'hover:text-blue-500'}`}
