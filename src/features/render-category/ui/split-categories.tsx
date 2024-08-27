@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { NotionDB } from '@/shared/types/notion';
 import { Accordion, AccordionItem } from '@nextui-org/react';
+import Link from 'next/link';
+import {Chip} from "@nextui-org/react";
 
 interface Props {
   categoryList: NotionDB[]
@@ -18,7 +20,7 @@ export const SplitCategories = ({ categoryList }: Props) => {
     return allSubCategory.filter(sub => sub.properties.group.multi_select.some(group => group.name === mainGroup));
   };
 
-  // AccordionUI에 전달할 데이터 구성
+  // Accordion에 전달할 데이터 구성
   const accordionItems = allMainCategory.map(main => {
     const mainGroup = main.properties.group.multi_select[0].name;
     const matchedSubCategory = getSubCategories(mainGroup);
@@ -32,16 +34,43 @@ export const SplitCategories = ({ categoryList }: Props) => {
       })),
     };
   });
+
+  // const isSelected = selectedCategoryId === id;
+
+  // const handleClick = () => {
+  //   onCategoryClick(id);
+  // };
+
+
   const defaultExpandedKeys = accordionItems.map((item) => item.id);
 
   return (
     <Accordion selectionMode="multiple" defaultExpandedKeys={defaultExpandedKeys}>
       {accordionItems.map((mainItem) => (
-        <AccordionItem key={mainItem.id} aria-label={mainItem.title} title={mainItem.title}>
+        <AccordionItem 
+          key={mainItem.id} 
+          aria-label={mainItem.title} 
+          title={mainItem.title}
+          // title={
+          //   <Chip color="warning" variant="light">
+          //     {mainItem.title}
+          //   </Chip>
+          // }
+        >
           <div className="pl-4">
             {mainItem.subTitles.map((subItem) => (
-              <div key={subItem.id} className="pb-2">
-                {subItem.title}
+              // <div key={subItem.id} className="pb-2">
+              //   {subItem.title}
+              // </div>
+              <div className="pb-2">
+                <Link 
+                  href={`/posts/${subItem.id}/1`}
+                  // className={`text-md ${isSelected ? 'text-blue-500' : 'hover:text-blue-500'}`}
+                  className={`text-md`}
+                  // onClick={handleClick}
+                >
+                  <div>{subItem.title}</div>
+                </Link>
               </div>
             ))}
           </div>

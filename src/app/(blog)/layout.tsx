@@ -19,7 +19,8 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
         <MainWrapper>
           <Header categoryList={categoryList} />
-          <MainPage />
+          {/* <MainPage /> */}
+          {children}
         </MainWrapper>
       </div>
 
