@@ -4,7 +4,7 @@ import { _Pagination } from '@/app/(blog)/_components/_Pagenation';
 import Link from 'next/link';
 
 interface PostsBlocksProps {
-  id: number;
+  id: string;
   initialBlocks: any[];
   currentPage: number;
 }

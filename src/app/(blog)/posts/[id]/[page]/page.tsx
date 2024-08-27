@@ -21,7 +21,14 @@ export async function generateStaticParams() {
   return paramsArray;
 }
 
-export default async function PostsPage({ params }: any) {
+interface props {
+  params: {
+    id: string;
+    page: string;
+  };
+}
+
+export default async function PostsPage({ params }: props) {
   const { id, page } = params;
   const currentPage = parseInt(page, 10);
   
@@ -32,9 +39,12 @@ export default async function PostsPage({ params }: any) {
     notFound();
   }
 
+  const postsProps = { id, initialBlocks: blocks, currentPage };
+
+
   return (
     <div>
-      <PostsBlocks id={id} initialBlocks={blocks} currentPage={currentPage} />
+      <PostsBlocks {...postsProps}/>
     </div>
   );
 }
