@@ -2,29 +2,29 @@ import { getBlocks, getDatabase, getPage } from "@/shared/lib/notion";
 import { notFound } from "next/navigation";
 import React from "react";
 
-// const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID as string;
+const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID as string;
 
-// export const generateStaticParams = async () => {
-//   const posts = await getDatabase(databaseId);
+export const generateStaticParams = async () => {
+  const posts = await getDatabase(databaseId);
 
-//   const postDetails = await Promise.all(
-//     posts.map(async (post) => {
-//       const blocks = await getBlocks(post.id);
-//       return {
-//         id: post.id,
-//         blockIds: blocks
-//           .filter((block: any) => block.type === 'child_page') // child_page 타입인 블록들만 필터링
-//           .map(block => block.id) // 필터된 블록들의 ID만 추출
-//       };
-//     })
-//   );
+  const postDetails = await Promise.all(
+    posts.map(async (post) => {
+      const blocks = await getBlocks(post.id);
+      return {
+        id: post.id,
+        blockIds: blocks
+          .filter((block: any) => block.type === 'child_page') // child_page 타입인 블록들만 필터링
+          .map(block => block.id) // 필터된 블록들의 ID만 추출
+      };
+    })
+  );
 
-//   return postDetails.flatMap((postDetail) => 
-//     postDetail.blockIds.map(blockId => ({
-//       id: blockId
-//     }))
-//   );
-// }
+  return postDetails.flatMap((postDetail) => 
+    postDetail.blockIds.map(blockId => ({
+      id: blockId
+    }))
+  );
+}
 
 const PostPage = async ({ params }: any) => {
   // const { id } = params;
