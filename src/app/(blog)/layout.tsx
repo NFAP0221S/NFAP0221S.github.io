@@ -10,7 +10,7 @@ const Header = dynamic(() => import('@/widgets/header').then((mod) => mod.Header
 const Sidebar = dynamic(() => import('@/widgets/sidebar').then((mod) => mod.Sidebar));
 const Footer = dynamic(() => import('@/widgets/footer').then((mod) => mod.Footer));
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
+const Layout = async ({ children }: { children: React.ReactNode }) => {
   const categoryList: NotionDB[] = await fetchCategories()
 
   return (
@@ -31,6 +31,8 @@ export default async function Layout({ children }: { children: React.ReactNode }
     </div>
   );
 }
+
+export default Layout
 
 const LeftBox = ({ children }: { children: React.ReactNode }) => {
   return (

@@ -4,7 +4,7 @@ import React from "react";
 
 const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID as string;
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const posts = await getDatabase(databaseId);
 
   const postDetails = await Promise.all(
@@ -26,7 +26,7 @@ export async function generateStaticParams() {
   );
 }
 
-export default async function PostPage({ params }: any) {
+const PostPage = async ({ params }: any) => {
   const { id } = params;
   
   const page: any = await getPage(id);
@@ -198,3 +198,5 @@ export default async function PostPage({ params }: any) {
     </div>
   );
 }
+
+export default PostPage

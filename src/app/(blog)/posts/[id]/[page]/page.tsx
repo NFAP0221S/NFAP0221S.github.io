@@ -4,7 +4,7 @@ import { PostsPage } from '@/pages/posts-page';
 import { getDatabase, getBlocks, getPage } from '@/shared/lib/notion';
 
 // generateStaticParams 함수 추가
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID as string;
   if (!databaseId) {
     throw new Error("NEXT_PUBLIC_NOTION_DATABASE_ID is not defined");
@@ -28,7 +28,7 @@ interface props {
   };
 }
 
-export default async function Posts({ params }: props) {
+const Posts = async ({ params }: props) => {
   const { id, page } = params;
   const currentPage = parseInt(page, 10);
   
@@ -43,3 +43,5 @@ export default async function Posts({ params }: props) {
 
   return <PostsPage {...postsProps}/>;
 }
+
+export default Posts
