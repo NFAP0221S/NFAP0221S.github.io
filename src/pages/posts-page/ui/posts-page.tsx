@@ -1,6 +1,4 @@
 import React from 'react'
-import _Card from '@/app/(blog)/_components/_Card';
-import Link from 'next/link';
 import { PostPagination } from '@/widgets/pagination';
 import { PostCard } from '@/widgets/card';
 import { getBlocks } from '@/lib/notion';

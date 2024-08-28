@@ -17,7 +17,7 @@ import {
   Avatar,
   Chip
 } from "@nextui-org/react";
-import DarkModeSwitch from "@/shared/_components/DarkModeSwitch";
+import DarkModeSwitch from "@/shared/ui/dark-mode-switch";
 import { SplitCategories } from "@/features/render-category";
 import { CatListProps } from "@/shared/types/component";
 
