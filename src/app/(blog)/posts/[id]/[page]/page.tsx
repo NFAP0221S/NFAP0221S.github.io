@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import React from 'react';
-import { PostsPage } from '@/views/posts-page';
+import { PostsPage } from '@/pages/posts-page';
 import { getDatabase, getBlocks, getPage } from '@/shared/lib/notion';
 
 // generateStaticParams 함수 추가

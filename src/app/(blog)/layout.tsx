@@ -50,7 +50,7 @@ const RightBox = ({ children }: { children: React.ReactNode }) => {
 };
 const MainBox = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="p-4 mb-4 h-5/6 rounded-lg shadow-md flex-1">
+    <main className="p-4 mb-4 h-[90%] rounded-lg shadow-md flex-1">
       {children}
     </main>
   );
