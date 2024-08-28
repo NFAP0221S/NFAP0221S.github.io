@@ -1,7 +1,7 @@
-import { getBlocks, getDatabase, getPage } from '@/lib/notion';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { PostsPage } from '@/pages/posts-page';
+import { getDatabase, getBlocks, getPage } from '@/shared/lib/notion';
 
 // generateStaticParams 함수 추가
 export async function generateStaticParams() {

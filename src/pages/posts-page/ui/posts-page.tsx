@@ -1,7 +1,7 @@
 import React from 'react'
 import { PostPagination } from '@/widgets/pagination';
 import { PostCard } from '@/widgets/card';
-import { getBlocks } from '@/lib/notion';
+import { getBlocks } from '@/shared/lib/notion';
 
 interface PostsBlocksProps {
   id: string;

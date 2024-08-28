@@ -1,4 +1,4 @@
-import { getBlocks, getDatabase, getPage } from "@/lib/notion";
+import { getBlocks, getDatabase, getPage } from "@/shared/lib/notion";
 import { notFound } from "next/navigation";
 import React from "react";
 

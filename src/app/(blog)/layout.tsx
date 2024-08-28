@@ -1,4 +1,4 @@
-import { fetchCategories } from '@/services/categories';
+import { fetchCategories } from '@/shared/services/categories';
 import { NotionDB } from '@/shared/types/notion';
 // import { Header } from '@/widgets/header';
 // import { Sidebar } from '@/widgets/sidebar';
