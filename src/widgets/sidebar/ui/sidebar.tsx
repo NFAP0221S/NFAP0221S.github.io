@@ -12,7 +12,6 @@ export const Sidebar = ({categoryList}: CatListProps) => {
       {/* <SidebarHeader/> */}
       <ScrollShadow className="pr-4 h-full">
         <SplitCategories categoryList={categoryList} />
-        <SplitCategories categoryList={categoryList} />
       </ScrollShadow>
     </div>
   )
