@@ -24,7 +24,8 @@ const nextConfig = {
     NEXT_PUBLIC_BUILD_DATE: buildDate,
   },
   experimental: {
-    turbo: {
+    turbo: isProd ? false :
+    {
       rules: {
         '*.svg': {
           loaders: ['@svgr/webpack'],

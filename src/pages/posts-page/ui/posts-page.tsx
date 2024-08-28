@@ -41,23 +41,25 @@ export const PostsPage = ({ id, initialBlocks, currentPage }: PostsBlocksProps) 
   );
 
   return (
-    <div>
-      <ul className="flex flex-wrap justify-start">
+    <React.Fragment>
+      {/* <ul className="flex flex-wrap justify-start"> */}
+      <ul className="grid grid-cols-1 sm:grid-cols-2 w-[80%]">
         {paginatedBlocks.map((block: any) => (
           <React.Fragment key={block.id}>
             {block?.type === 'child_page' && (
-              <li className="w-full sm:w-1/1 md:w-1/1 lg:w-1/2 p-2">
+              // <li className="w-full sm:w-1/2 lg:w-1/3 p-2">
+              <li className="p-2">
                 {renderCards(block)}
               </li>
             )}
           </React.Fragment>
         ))}
       </ul>
-      <div className="py-4">
+      <div className="py-4 w-[80%]">
         <div className="flex justify-center">
           <PostPagination totalPages={totalPages} currentPage={currentPage} basePath={`/posts/${id}`} />
         </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }

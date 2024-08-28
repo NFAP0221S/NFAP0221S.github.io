@@ -35,8 +35,8 @@ export const Header = ({categoryList}: CatListProps) => {
       </NavbarContent>
 
       <NavbarBrand className="flex justify-start gap-4">
-        <p className="font-bold text-inherit">Hansol.dev</p>
-        <Chip color="success" variant="dot">Build: {buildDate}</Chip>
+        <p className="font-bold text-inherit">Hansol.io</p>
+        <Chip color="success" variant="dot">Update: {buildDate}</Chip>
       </NavbarBrand>
 
       {/* <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -77,10 +77,10 @@ export const Header = ({categoryList}: CatListProps) => {
               {/* <p className="font-semibold">vawav11@gmail.com</p> */}
               Lee HanSol
             </DropdownItem>
-            <DropdownItem key="settings">vawav11@gmail.com</DropdownItem>
-            <DropdownItem key="settings">Frontend Jr</DropdownItem>
-            <DropdownItem key="settings">React</DropdownItem>
-            <DropdownItem key="settings">TS</DropdownItem>
+            <DropdownItem key="drop-mail">vawav11@gmail.com</DropdownItem>
+            <DropdownItem key="drop-job">Frontend Jr</DropdownItem>
+            <DropdownItem key="drop-skill-1">React</DropdownItem>
+            <DropdownItem key="drop-skill-2">TS</DropdownItem>
             {/* <DropdownItem key="system">System</DropdownItem> */}
             {/* <DropdownItem key="configurations">Configurations</DropdownItem> */}
             {/* <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem> */}

@@ -14,7 +14,7 @@ export const PostCard = ({ id, title, date, blocks }: CardProps) => {
   const dateSlcie = date ? date.substring(0, 10) : '';
 
     return ( 
-      <Card className="max-w-[400px]">
+      <Card className="max-w-[450px]">
         <CardHeader className="flex gap-3">
           <Button
             radius="md" 
