@@ -1,14 +1,8 @@
 import { fetchCategories } from '@/shared/services/categories';
 import { NotionDB } from '@/shared/types/notion';
-// import { Header } from '@/widgets/header';
-// import { Sidebar } from '@/widgets/sidebar';
-// import { Footer } from '@/widgets/footer';
-
-import dynamic from 'next/dynamic';
-
-const Header = dynamic(() => import('@/widgets/header').then((mod) => mod.Header));
-const Sidebar = dynamic(() => import('@/widgets/sidebar').then((mod) => mod.Sidebar));
-const Footer = dynamic(() => import('@/widgets/footer').then((mod) => mod.Footer));
+import { Header } from '@/widgets/header';
+import { Sidebar } from '@/widgets/sidebar';
+import { Footer } from '@/widgets/footer';
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const categoryList: NotionDB[] = await fetchCategories()
