@@ -50,7 +50,11 @@ export const SplitCategories = ({ categoryList }: Props) => {
         <AccordionItem 
           key={mainItem.id} 
           aria-label={mainItem.title} 
-          title={mainItem.title}
+          title={
+            <span className="text-base">
+              {mainItem.title}
+            </span>
+          }
           // title={
           //   <Chip color="warning" variant="light">
           //     {mainItem.title}
