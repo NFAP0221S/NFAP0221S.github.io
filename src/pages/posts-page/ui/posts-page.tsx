@@ -2,6 +2,7 @@ import React from 'react'
 import { PostPagination } from '@/widgets/pagination';
 import { PostCard } from '@/widgets/card';
 import { getBlocks } from '@/shared/lib/notion';
+import Link from 'next/link';
 
 interface PostsBlocksProps {
   id: string;
@@ -20,12 +21,12 @@ const renderCards = async (block: any) => {
   const postCardProps = { id, title, date, blocks };
 
   if (type === 'child_page' && id && title && date) {
-    return <PostCard key={id} {...postCardProps} />;
-    // return (
-    //   <Link key={`link-${id}`} href={`/post/${id}`}>
-    //     <PostCard key={id} {...postCardProps} />
-    //   </Link>
-    // )
+    // return <PostCard key={id} {...postCardProps} />;
+    return (
+      <Link key={`link-${id}`} href={`/post/${id}`}>
+        <PostCard key={id} {...postCardProps} />
+      </Link>
+    )
   }
 };
 
