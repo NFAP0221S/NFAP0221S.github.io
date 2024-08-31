@@ -3,6 +3,8 @@
 import React from "react";
 import {Pagination, Button} from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
+import { useIsDark } from "@/app/hooks";
 
 interface PaginationProps {
   totalPages: number;
@@ -11,6 +13,7 @@ interface PaginationProps {
 }
 
 export const PostPagination = ({ totalPages, currentPage, basePath }: PaginationProps) => {
+  const isDark = useIsDark();
   const router = useRouter();
 
   const handlePageChange = (page: number) => {
@@ -22,7 +25,7 @@ export const PostPagination = ({ totalPages, currentPage, basePath }: Pagination
       total={totalPages}
       initialPage={currentPage}
       boundaries={3}
-      color="warning"
+      color={isDark ? 'warning' : 'primary'}
       onChange={handlePageChange}
     />
   );

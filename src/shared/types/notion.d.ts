@@ -25,6 +25,9 @@ export interface NotionDBProperties {
   level: {
     rich_text: NotionRichText[];
   };
+  render: {
+    rich_text: NotionRichText[];
+  };
 }
 
 // 데이터베이스의 단일 항목을 나타내는 타입

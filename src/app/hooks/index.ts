@@ -1,2 +1,2 @@
 export * from './use-mounted'
-export * from './use-themeClass'
+export * from './use-is-dark'
