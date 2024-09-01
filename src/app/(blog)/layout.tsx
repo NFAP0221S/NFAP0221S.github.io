@@ -37,14 +37,14 @@ const LeftBox = ({ children }: { children: React.ReactNode }) => {
 };
 const RightBox = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex-1 p-4 pt-0 lg:pl-0">
+    <div className="flex-1 p-4 pt-0 lg:pl-0 overflow-hidden">
       {children}
     </div>
   );
 };
 const MainBox = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="p-4 mb-4 h-[90%] flex-1">
+    <main className="p-4 mb-4 h-[90%] flex-1 overflow-auto max-w-full">
       {children}
     </main>
   );
