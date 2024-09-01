@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import ThemeProvider from "./provider/theme-provider";
-import Providers from "./provider/next-ui-provider";
+import NextUiProvider from "./provider/next-ui-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,11 +30,11 @@ const RootLayout = ({
             enableSystem
             disableTransitionOnChange
             >
-            <Providers>
+            <NextUiProvider>
               <main className={inter.className}>
                 {children}
               </main>
-            </Providers>
+            </NextUiProvider>
           </ThemeProvider>
       </body>
     </html>

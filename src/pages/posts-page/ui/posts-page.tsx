@@ -21,12 +21,7 @@ const renderCards = async (block: any) => {
   const postCardProps = { id, title, date, blocks };
 
   if (type === 'child_page' && id && title && date) {
-    // return <PostCard key={id} {...postCardProps} />;
-    return (
-      <Link key={`link-${id}`} href={`/post/${id}`}>
-        <PostCard key={id} {...postCardProps} />
-      </Link>
-    )
+    return <PostCard key={id} {...postCardProps} />;
   }
 };
 
