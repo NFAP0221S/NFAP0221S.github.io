@@ -13,11 +13,11 @@ export const PostPage = ({ page, blocks }: PostBlocksProps) => {
   const title = page?.properties['이름']?.title?.[0]?.plain_text || '제목없음...'
 
   return (
-    <div className="w-full max-w-full">
+    <React.Fragment>
       <PostHeader title={title} />
       <div className="overflow-auto">
         <RenderBlock blocks={blocks} />
       </div>
-    </div>
+    </React.Fragment>
   );
 }
