@@ -28,6 +28,9 @@ export interface NotionDBProperties {
   render: {
     rich_text: NotionRichText[];
   };
+  sort: {
+    rich_text: NotionRichText[];
+  };
 }
 
 // 데이터베이스의 단일 항목을 나타내는 타입
