@@ -10,7 +10,8 @@ interface PostBlocksProps {
 
 export const PostPage = ({ page, blocks }: PostBlocksProps) => {
 
-  const title = page?.properties['이름']?.title?.[0]?.plain_text || '제목없음...'
+  // const title = page?.properties['이름']?.title?.[0]?.plain_text || page?.properties.title.title[0].plain_text
+  const title = page?.properties.title.title[0].plain_text
 
   return (
     <React.Fragment>
