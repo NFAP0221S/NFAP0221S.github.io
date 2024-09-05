@@ -36,13 +36,12 @@ export const PostsPage = ({ id, initialBlocks, currentPage }: PostsBlocksProps) 
 
   return (
     <React.Fragment>
-      {/* <ul className="flex flex-wrap justify-start"> */}
       <ul className="grid grid-cols-1 sm:grid-cols-2 w-[80%]">
-        {paginatedBlocks.map((block: any) => (
+        {paginatedBlocks.map((block: any, index: number) => (
           <React.Fragment key={block.id}>
             {block?.type === 'child_page' && (
               // <li className="w-full sm:w-1/2 lg:w-1/3 p-2">
-              <li className="p-2">
+              <li className={`p-2 ${index % 2 === 0 ? 'justify-self-end' : 'justify-self-start'}`}>
                 {renderCards(block)}
               </li>
             )}
