@@ -41,7 +41,7 @@ export const PostsPage = ({ id, initialBlocks, currentPage }: PostsBlocksProps) 
           <React.Fragment key={block.id}>
             {block?.type === 'child_page' && (
               // <li className="w-full sm:w-1/2 lg:w-1/3 p-2">
-              <li className={`p-2 ${index % 2 === 0 ? 'justify-self-end' : 'justify-self-start'}`}>
+              <li className={`p-2 w-full ${index % 2 === 0 ? 'justify-self-end' : 'justify-self-start'}`}>
                 {renderCards(block)}
               </li>
             )}
