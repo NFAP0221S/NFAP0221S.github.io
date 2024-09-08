@@ -10,7 +10,7 @@ export const PostHeader = ({ title }: {title: string}) => {
   const router = useRouter(); 
 
   return (
-    <div className="flex gap-4 items-start pb-4">
+    <div className="flex gap-4 items-center pb-4">
       <Button 
         isIconOnly 
         color={isDark ? 'warning' : 'primary'}
@@ -19,9 +19,11 @@ export const PostHeader = ({ title }: {title: string}) => {
       >
         <IoMdArrowRoundBack />
       </Button>
-      <h1 className="flex-1 text-start justify-center text-xl font-bold">
-        {title}
-      </h1>
+      <div className="flex-1 text-start text-3xl font-bold">
+        <h1>
+          {title}
+        </h1>
+      </div>
     </div>
   );
 };
