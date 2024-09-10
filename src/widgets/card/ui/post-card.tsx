@@ -20,7 +20,7 @@ export const PostCard = ({ id, title, date, blocks }: CardProps) => {
   };
 
   return ( 
-    <Card className="max-w-[450px]">
+    <Card className="w-[450px]">
       <CardHeader className="flex gap-3">
         <Button
           radius="md" 
