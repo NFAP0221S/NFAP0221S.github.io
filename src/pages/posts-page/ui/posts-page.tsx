@@ -29,7 +29,9 @@ export const PostsPage = ({ id, initialBlocks, currentPage }: PostsBlocksProps) 
   const itemsPerPage = 8;
   const totalPages = Math.ceil(initialBlocks.length / itemsPerPage);
 
-  const paginatedBlocks = initialBlocks.slice(
+  const reversedBlocks = [...initialBlocks].reverse(); 
+
+  const paginatedBlocks = reversedBlocks.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
