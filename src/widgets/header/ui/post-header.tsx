@@ -19,10 +19,15 @@ export const PostHeader = ({ title }: {title: string}) => {
       >
         <IoMdArrowRoundBack />
       </Button>
-      <div className="flex-1 text-start text-3xl font-bold">
-        <h1>
-          {title}
-        </h1>
+      <div className="flex">
+        <div className="flex-1 text-start text-3xl font-bold">
+          <h1>
+            {title}
+          </h1>
+          <div>
+            타이틀 바텀... (날짜, 이름)
+          </div>
+        </div>
       </div>
     </div>
   );
