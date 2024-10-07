@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { PieChart as PieChartComponent, Pie, Cell, ResponsiveContainer } from 'recharts'
-import { Moon, Sun, Github, Menu, ChevronDown, ArrowUp } from "lucide-react"
+import { Moon, Sun, Github, Menu, ArrowUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
@@ -18,13 +18,6 @@ const pieChartData = [
 ]
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28']
-
-const posts = [
-  { id: 1, title: "Getting Started with Next.js and Understanding Its Core Concepts", date: "2023-06-01", excerpt: "Learn the basics of Next.js and how to set up your first project.", category: "Tech" },
-  { id: 2, title: "The Art of Minimalism: Simplifying Your Life for Maximum Happiness", date: "2023-06-15", excerpt: "Explore how minimalism can improve your life and boost productivity.", category: "Lifestyle" },
-  { id: 3, title: "Hidden Gems of Southeast Asia: Off-the-Beaten-Path Destinations", date: "2023-07-01", excerpt: "Discover lesser-known but breathtaking destinations in Southeast Asia.", category: "Travel" },
-  { id: 4, title: "Advanced React Patterns for Building Scalable Applications", date: "2023-07-15", excerpt: "Dive deep into advanced React patterns to level up your development skills.", category: "Tech" },
-]
 
 const categories = [
   {
@@ -54,10 +47,6 @@ export default function Home() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
-
-  useEffect(() => {
-    setSidebarOpen(false)
-  }, [pathname])
 
   const showSidebar = pathname.startsWith('/blog')
 
@@ -117,7 +106,6 @@ export default function Home() {
                     <CollapsibleTrigger asChild>
                       <Button variant="ghost" className="w-full justify-between">
                         {category.name}
-                        <ChevronDown className="h-4 w-4" />
                       </Button>
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
@@ -138,62 +126,64 @@ export default function Home() {
 
         {/* Main content area */}
         <main className="flex-1 p-6 md:px-8">
-          <h1 className="text-4xl font-bold mb-6">Welcome to My Blog</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div>
-              <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-              <p className="text-lg">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold mb-4">Welcome to My Blog</h1>
+              <p className="text-xl text-muted-foreground">
                 Hi, I'm a passionate developer who loves to write about technology,
                 lifestyle, and travel. This blog is my platform to share my thoughts
                 and experiences with the world.
               </p>
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold mb-4">My Interests</h2>
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChartComponent>
-                  <Pie
-                    data={pieChartData}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    outerRadius={80}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    {pieChartData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                </PieChartComponent>
-              </ResponsiveContainer>
-            </div>
-          </div>
-          <h2 className="text-3xl font-bold mb-6">Latest Blog Posts</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {posts.map((post) => (
-              <Card key={post.id}>
-                <CardHeader>
-                  <CardTitle className="truncate" title={post.title}>{post.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-2">{post.date} | {post.category}</p>
-                  <p>{post.excerpt}</p>
-                </CardContent>
-                <CardFooter>
-                  <Link href={`/blog/${post.id}`} className="text-primary hover:underline">
-                    Read more
-                  </Link>
-                </CardFooter>
-              </Card>
-            ))}
+
+            <Card className="overflow-hidden">
+              <div className="aspect-video bg-muted">
+                {/* Replace with actual image */}
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                  Image Placeholder
+                </div>
+              </div>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex flex-col md:flex-row items-center gap-6">
+                  <div className="w-full md:w-1/2 order-2 md:order-1">
+                    <h2 className="text-2xl font-semibold mb-4">My Interests</h2>
+                    <p className="text-muted-foreground">
+                      I'm passionate about various topics in technology, lifestyle, and travel.
+                      This chart represents the distribution of content you'll find on my blog.
+                    </p>
+                  </div>
+                  <div className="w-full md:w-1/2 order-1 md:order-2">
+                    <ResponsiveContainer width="100%" height={200}>
+                      <PieChartComponent>
+                        <Pie
+                          data={pieChartData}
+                          cx="50%"
+                          cy="50%"
+                          labelLine={false}
+                          outerRadius={80}
+                          fill="#8884d8"
+                          dataKey="value"
+                        >
+                          {pieChartData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                          ))}
+                        </Pie>
+                      </PieChartComponent>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </main>
       </div>
 
       {/* Footer */}
       <footer className="border-t py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-4">
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             Last updated: {new Date().toLocaleDateString()}
           </p>
