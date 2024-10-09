@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { fetchCategories } from "@/shared/services/categories";
 import { NotionDB } from "@/shared/types/notion";
