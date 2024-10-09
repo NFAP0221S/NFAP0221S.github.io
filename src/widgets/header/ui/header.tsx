@@ -1,29 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarMenuToggle,
-  NavbarItem,
-  NavbarMenu,
-  // NavbarMenuItem,
-  Link,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  Avatar,
-  Chip,
-} from "@nextui-org/react";
+import Link from "next/link";
 import DarkModeSwitch from "@/shared/ui/dark-mode-switch";
-import { SplitCategories } from "@/features/render-category";
-import { CatListProps } from "@/shared/types/component";
+// import { SplitCategories } from "@/features/render-category";
+// import { CatListProps } from "@/shared/types/component";
 import { Button } from "@/shared/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
+import { Moon, Sun, Github, Menu, ArrowUp } from "lucide-react";
+import { useTheme } from "next-themes";
 
-export const Header = ({ categoryList }: CatListProps) => {
+export const Header = () => {
+// export const Header = ({ categoryList }: CatListProps) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
