@@ -3,7 +3,11 @@
 import { SplitCategories } from "@/features/render-category";
 import { CatListProps } from "@/shared/types/component";
 import { Button } from "@/shared/ui/button";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/shared/ui/collapsible"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/shared/ui/collapsible";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -12,24 +16,28 @@ import { useState } from "react";
 const categories = [
   {
     name: "Tech",
-    subcategories: ["Web Development", "Mobile Development", "AI & Machine Learning"]
+    subcategories: [
+      "Web Development",
+      "Mobile Development",
+      "AI & Machine Learning",
+    ],
   },
   {
     name: "Lifestyle",
-    subcategories: ["Minimalism", "Productivity", "Health & Wellness"]
+    subcategories: ["Minimalism", "Productivity", "Health & Wellness"],
   },
   {
     name: "Travel",
-    subcategories: ["Asia", "Europe", "North America"]
-  }
-]
+    subcategories: ["Asia", "Europe", "North America"],
+  },
+];
 
 export const Sidebar = () => {
-// export const Sidebar = ({ categoryList }: CatListProps) => {
-  const [openCategory, setOpenCategory] = useState<string | null>(null)
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const pathname = usePathname()
-  const showSidebar = pathname?.startsWith('/blog')
+  // export const Sidebar = ({ categoryList }: CatListProps) => {
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const pathname = usePathname();
+  const showSidebar = pathname?.startsWith("/blog");
 
   return (
     <>
