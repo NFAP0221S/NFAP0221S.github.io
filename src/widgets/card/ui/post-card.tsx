@@ -1,57 +1,52 @@
-'use client'
+"use client";
 
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/shared/ui/card";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 interface CardProps {
-  id: string
-  title: string
-  date: string
-  blocks: any
+  id: number;
+  title: string;
+  date: string;
+  category: string;
+  excerpt: string;
+  blocks: any;
 }
 
-export const PostCard = ({ id, title, date, blocks }: CardProps) => {
+export const PostCard = ({ id, title, date, category, excerpt, blocks }: CardProps) => {
   const router = useRouter();
-  const text = blocks[1]?.paragraph?.rich_text[0]?.plain_text
+  const text = blocks[1]?.paragraph?.rich_text[0]?.plain_text;
   // const shortText = text ? text.substring(0, 8) : '';
-  const dateSlcie = date ? date.substring(0, 10) : '';
+  const dateSlcie = date ? date.substring(0, 10) : "";
 
   const handleButtonClick = () => {
     router.push(`/post/${id}`);
   };
 
-  return ( 
-    <Card className="w-[450px]">
-      <CardHeader className="flex gap-3">
-        <Button
-          radius="md" 
-          className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
-          size="sm"
-          isIconOnly={true}
-          onClick={handleButtonClick}  
-        >
-          {"->"}
-        </Button>
-        <div className="flex flex-col">
-        <p className="text-md line-clamp-1">{title}</p>
-        <p className="text-small text-default-500">{dateSlcie}</p>
-        </div>
+  return (
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
-      <Divider/>
-      <CardBody className="min-h-[72px]">
-        <p className="line-clamp-2">
-          {text}
+      <CardContent>
+        <p className="text-sm text-muted-foreground mb-2">
+          {date} | {category}
         </p>
-      </CardBody>
-      <Divider/>
+        <p>{excerpt}</p>
+      </CardContent>
       <CardFooter>
-        {/* <Link
-        isExternal
-        showAnchorIcon
-        href="https://github.com/nextui-org/nextui"
+        <Link
+          href={`/blog/${id}`}
+          className="text-primary hover:underline"
         >
-        Visit source code on GitHub.
-        </Link> */}
+          Read more
+        </Link>
       </CardFooter>
     </Card>
   );
-}
+};

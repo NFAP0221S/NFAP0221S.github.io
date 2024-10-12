@@ -10,6 +10,7 @@ import {
 } from "@/shared/ui/card";
 import Link from "next/link";
 import { PostPagination } from "@/widgets/pagination";
+import { PostCard } from "@/widgets/card";
 // import {
 //   PieChart as PieChartComponent,
 //   Pie,
@@ -25,6 +26,7 @@ const posts = [
     excerpt:
       "Learn the basics of Next.js and how to set up your first project.",
     category: "Tech",
+    blocks: "Tech",
   },
   {
     id: 2,
@@ -100,25 +102,7 @@ export const BlogPage = () => {
       <h1 className="text-4xl font-bold mb-6">Latest Blog Posts</h1>
       <div className="space-y-6">
         {currentPosts.map((post) => (
-          <Card key={post.id} className="w-full">
-            <CardHeader>
-              <CardTitle>{post.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-2">
-                {post.date} | {post.category}
-              </p>
-              <p>{post.excerpt}</p>
-            </CardContent>
-            <CardFooter>
-              <Link
-                href={`/blog/${post.id}`}
-                className="text-primary hover:underline"
-              >
-                Read more
-              </Link>
-            </CardFooter>
-          </Card>
+          <PostCard {...post} blocks={post.blocks} />
         ))}
       </div>
       <PostPagination
