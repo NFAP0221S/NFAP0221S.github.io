@@ -30,11 +30,11 @@ const RootLayout = ({
             enableSystem
             disableTransitionOnChange
             >
-            <NextUiProvider>
+            {/* <NextUiProvider> */}
               <main className={inter.className}>
                 {children}
               </main>
-            </NextUiProvider>
+            {/* </NextUiProvider> */}
           </ThemeProvider>
       </body>
     </html>
