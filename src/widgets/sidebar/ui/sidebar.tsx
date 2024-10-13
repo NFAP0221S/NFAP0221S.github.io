@@ -1,6 +1,6 @@
 "use client";
 
-import { SplitCategories } from "@/features/render-category";
+import { Categories } from "@/features/render-category";
 import { CatListProps } from "@/shared/types/component";
 import { Button } from "@/shared/ui/button";
 import {
@@ -32,8 +32,7 @@ const categories = [
   },
 ];
 
-export const Sidebar = () => {
-  // export const Sidebar = ({ categoryList }: CatListProps) => {
+export const Sidebar = ({ categoryList }: CatListProps) => {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
@@ -51,42 +50,7 @@ export const Sidebar = () => {
             <h2 className="mb-2 text-lg font-semibold tracking-tight">
               Categories
             </h2>
-            <div className="space-y-1">
-              {categories.map((category) => (
-                <Collapsible
-                  key={category.name}
-                  open={openCategory === category.name}
-                  onOpenChange={() =>
-                    setOpenCategory(
-                      openCategory === category.name ? null : category.name
-                    )
-                  }
-                >
-                  <CollapsibleTrigger asChild>
-                    <Button variant="ghost" className="w-full justify-between">
-                      {category.name}
-                    </Button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className="pl-4">
-                    {category.subcategories.map((subcategory) => (
-                      <Button
-                        key={subcategory}
-                        variant="ghost"
-                        className="w-full justify-start"
-                      >
-                        <Link
-                          href={`/blog/category/${category.name.toLowerCase()}/${subcategory
-                            .toLowerCase()
-                            .replace(" ", "-")}`}
-                        >
-                          {subcategory}
-                        </Link>
-                      </Button>
-                    ))}
-                  </CollapsibleContent>
-                </Collapsible>
-              ))}
-            </div>
+            <Categories categoryList={categoryList} />
           </div>
         </aside>
       )}

@@ -20,13 +20,13 @@ interface CardProps {
 
 export const PostCard = ({ id, title, date, category, excerpt, blocks }: CardProps) => {
   const router = useRouter();
-  const text = blocks[1]?.paragraph?.rich_text[0]?.plain_text;
+  // const text = blocks[1]?.paragraph?.rich_text[0]?.plain_text;
   // const shortText = text ? text.substring(0, 8) : '';
-  const dateSlcie = date ? date.substring(0, 10) : "";
+  // const dateSlcie = date ? date.substring(0, 10) : "";
 
-  const handleButtonClick = () => {
-    router.push(`/post/${id}`);
-  };
+  // const handleButtonClick = () => {
+  //   router.push(`/post/${id}`);
+  // };
 
   return (
     <Card className="w-full">

@@ -1,1 +1,1 @@
-export { SplitCategories } from './ui/split-categories'
+export { Categories } from './ui/categories'

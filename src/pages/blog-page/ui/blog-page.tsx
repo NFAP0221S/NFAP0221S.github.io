@@ -102,7 +102,7 @@ export const BlogPage = () => {
       <h1 className="text-4xl font-bold mb-6">Latest Blog Posts</h1>
       <div className="space-y-6">
         {currentPosts.map((post) => (
-          <PostCard {...post} blocks={post.blocks} />
+          <PostCard key={post.id} {...post} blocks={post.blocks} />
         ))}
       </div>
       <PostPagination

@@ -1,5 +1,3 @@
-"use client";
-
 import { fetchCategories } from "@/shared/services/categories";
 import { NotionDB } from "@/shared/types/notion";
 import { Header } from "@/widgets/header";
@@ -15,7 +13,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       <Header />
       <div className="flex flex-1">
         {/* Sidebar */}
-        <Sidebar />
+        <Sidebar categoryList={categoryList} />
         {/* Main content */}
         {children}
       </div>
