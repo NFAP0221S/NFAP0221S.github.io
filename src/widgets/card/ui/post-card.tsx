@@ -9,6 +9,7 @@ import {
 } from "@/shared/ui/card";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 interface CardProps {
   id: number;
   title: string;
