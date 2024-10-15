@@ -13,25 +13,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 // import { SidebarHeader } from "./sidebar-header";
 
-const categories = [
-  {
-    name: "Tech",
-    subcategories: [
-      "Web Development",
-      "Mobile Development",
-      "AI & Machine Learning",
-    ],
-  },
-  {
-    name: "Lifestyle",
-    subcategories: ["Minimalism", "Productivity", "Health & Wellness"],
-  },
-  {
-    name: "Travel",
-    subcategories: ["Asia", "Europe", "North America"],
-  },
-];
-
 export const Sidebar = ({ categoryList }: CatListProps) => {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);

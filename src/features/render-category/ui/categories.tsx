@@ -89,9 +89,10 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
                 className="w-full justify-start"
               >
                 <Link
-                  href={`/blog/category/${category.title.toLowerCase()}/${subcategory.title
-                    .toLowerCase()
-                    .replace(" ", "-")}`}
+                  href={`/blog/posts/${category.id}/1`}
+                  // href={`/blog/posts/${category.title.toLowerCase()}/${subcategory.title
+                  //   .toLowerCase()
+                  //   .replace(" ", "-")}`}
                 >
                   {subcategory.title}
                 </Link>

@@ -15,17 +15,17 @@ export const generateStaticParams = async () => {
     throw new Error("NEXT_PUBLIC_NOTION_DATABASE_ID is not defined");
   }
   const posts = await getDatabase(databaseId);
-  const paramsArray = [];
-  for (const post of posts) {
-    const blocks = await getBlocks(post.id);
-    const totalPages = Math.ceil(blocks.length / 8);
-    for (let page = 1; page <= totalPages; page++) {
-      paramsArray.push({ id: post.id, page: page.toString() });
-    }
-  }
+  // const paramsArray = [];
+  // for (const post of posts) {
+  //   const blocks = await getBlocks(post.id);
+  //   const totalPages = Math.ceil(blocks.length / 8);
+  //   for (let page = 1; page <= totalPages; page++) {
+  //     paramsArray.push({ id: post.id, page: page.toString() });
+  //   }
+  // }
   // return paramsArray;
-  console.log('### paramsArray', paramsArray)
-  console.log('### posts', posts)
+  // console.log('### paramsArray', paraㅋmsArray)
+  // console.log('### posts', posts)
   return posts
 };
 
@@ -41,8 +41,9 @@ const Blog = async ({ params }: props) => {
   //   notFound();
   // }
 
+  return <BlogPage />;
   // return <BlogPage {...postsProps}/>;
-  return <div>Hello</div>;
+  // return <div>Hello</div>;
 };
 
 export default Blog;

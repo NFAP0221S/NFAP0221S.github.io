@@ -40,7 +40,8 @@ interface PostsBlocksProps {
 
 const POSTS_PER_PAGE = 5;
 
-export const BlogPage = ({ id, initialBlocks, currentPage }: PostsBlocksProps) => {
+export const BlogPage = () => {
+// export const BlogPage = ({ id, initialBlocks, currentPage }: PostsBlocksProps) => {
   // const [currentPage, setCurrentPage] = useState(1);
   // const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
@@ -49,16 +50,6 @@ export const BlogPage = ({ id, initialBlocks, currentPage }: PostsBlocksProps) =
   // const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   // const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  console.log('### initialBlocks', initialBlocks)
-  const itemsPerPage = 8;
-  const totalPages = Math.ceil(initialBlocks.length / itemsPerPage);
-
-  const reversedBlocks = [...initialBlocks].reverse(); 
-
-  const paginatedBlocks = reversedBlocks.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
 
   return (
     <main className="flex-grow p-8 md:p-12 lg:p-8">

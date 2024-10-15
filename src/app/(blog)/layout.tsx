@@ -7,7 +7,7 @@ import { ScrollToTopButton } from "@/widgets/scroll-to-top";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const categoryList: NotionDB[] = await fetchCategories();
-
+  
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
