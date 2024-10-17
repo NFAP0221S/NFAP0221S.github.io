@@ -63,7 +63,7 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
       };
     });
   }, [allMainCategory, getSubCategories]);
-
+  console.log('### accordionItems', accordionItems)
   return (
     <div className="space-y-1">
       {accordionItems.map((category) => (
@@ -89,7 +89,7 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
                 className="w-full justify-start"
               >
                 <Link
-                  href={`/blog/posts/${category.id}/1`}
+                  href={`/blog/posts/${subcategory.id}/1`}
                   // href={`/blog/posts/${category.title.toLowerCase()}/${subcategory.title
                   //   .toLowerCase()
                   //   .replace(" ", "-")}`}
