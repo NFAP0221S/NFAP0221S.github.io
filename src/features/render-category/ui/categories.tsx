@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useCallback } from "react";
-import Link from 'next/link';
+import Link from "next/link";
 import { NotionDB } from "@/shared/types/notion";
 import {
   Collapsible,
@@ -9,13 +9,17 @@ import {
   CollapsibleTrigger,
 } from "@/shared/ui/collapsible";
 import { Button } from "@/shared/ui/button";
+import { useSubCategory } from "@/app/provider/category-provider";
 
 interface SplitCategoriesProps {
   categoryList: NotionDB[];
 }
 
 export const Categories = ({ categoryList }: SplitCategoriesProps) => {
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+  const { setSelectedSubCategory } = useSubCategory();
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
+    null
+  );
   const [openCategory, setOpenCategory] = useState<string | null>(null);
 
   const allMainCategory = useMemo(() => {
@@ -63,7 +67,7 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
       };
     });
   }, [allMainCategory, getSubCategories]);
-  console.log('### accordionItems', accordionItems)
+
   return (
     <div className="space-y-1">
       {accordionItems.map((category) => (
@@ -71,9 +75,7 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
           key={category.id}
           open={openCategory === category.id}
           onOpenChange={() =>
-            setOpenCategory(
-              openCategory === category.id ? null : category.id
-            )
+            setOpenCategory(openCategory === category.id ? null : category.id)
           }
         >
           <CollapsibleTrigger asChild>
@@ -87,6 +89,7 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
                 key={subcategory.id}
                 variant="ghost"
                 className="w-full justify-start"
+                onClick={() => setSelectedSubCategory(subcategory.title)}
               >
                 <Link
                   href={`/blog/posts/${subcategory.id}/1`}

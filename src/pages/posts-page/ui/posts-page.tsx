@@ -1,8 +1,11 @@
+'use client'
+
 import React from "react";
 import { PostPagination } from "@/widgets/pagination";
 import { PostCard } from "@/widgets/card";
 import { getBlocks } from "@/shared/lib/notion";
 import Link from "next/link";
+import { useSubCategory } from "@/app/provider/category-provider";
 
 interface PostsBlocksProps {
   id: string;
@@ -30,6 +33,8 @@ export const PostsPage = ({
   initialBlocks,
   currentPage,
 }: PostsBlocksProps) => {
+  const { selectedSubCategory } = useSubCategory();
+  
   const itemsPerPage = 5;
   const totalPages = Math.ceil(initialBlocks.length / itemsPerPage);
 
@@ -42,7 +47,8 @@ export const PostsPage = ({
 
   return (
     <main className="flex-grow p-8 md:p-12 lg:p-8">
-      <h1 className="text-4xl font-bold mb-6">Latest Blog Posts</h1>
+      {/* <h1 className="text-4xl font-bold mb-6">Latest Blog Posts</h1> */}
+      <h1 className="text-4xl font-bold mb-6">{selectedSubCategory}</h1>
       <div className="space-y-6">
         {paginatedBlocks.map((post) => (
           <PostCard key={post.id} {...post} blocks={post.blocks} />
