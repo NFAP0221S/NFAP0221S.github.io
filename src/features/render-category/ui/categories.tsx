@@ -22,6 +22,7 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
   );
   const [openCategory, setOpenCategory] = useState<string | null>(null);
 
+  // 가져온 main,sub 카테고리 리스트 -> main 카테고리만 정렬하여 반환
   const allMainCategory = useMemo(() => {
     return categoryList
       .filter(
@@ -36,12 +37,14 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
       });
   }, [categoryList]);
 
+  // 가져온 main,sub 카테고리 리스트 -> sub 카테고리만 반환
   const allSubCategory = useMemo(() => {
     return categoryList.filter(
       (post) => post.properties.level.rich_text[0].plain_text === "sub"
     );
   }, [categoryList]);
 
+  // allSubCategory(sub 카테고리)를 main 카테고리에 그룹화
   const getSubCategories = useCallback(
     (mainGroup: string) =>
       allSubCategory.filter((sub) =>
@@ -52,6 +55,8 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
     [allSubCategory]
   );
 
+  // 가져온 main,sub 카테고리 리스트 -> main,sub 카테고리 그룹화 하여
+  // 사이드바 (아코디언) 리스트 생성
   const accordionItems = useMemo(() => {
     return allMainCategory.map((main) => {
       const mainGroup = main.properties.group.multi_select[0].name;
@@ -67,6 +72,9 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
       };
     });
   }, [allMainCategory, getSubCategories]);
+
+  console.log("### accordionItems", accordionItems);
+  console.log("### allMainCategory", allMainCategory);
 
   return (
     <div className="space-y-1">

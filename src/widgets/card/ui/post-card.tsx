@@ -28,7 +28,7 @@ export const PostCard = (props: any) => {
   // const shortText = text ? text.substring(0, 8) : '';
   // const dateSlcie = date ? date.substring(0, 10) : "";
   const dateSlcie = props.last_edited_time ? props.last_edited_time.substring(0, 10) : "";
-  console.log('### props', props)
+
   // const handleButtonClick = () => {
   //   router.push(`/post/${id}`);
   // };

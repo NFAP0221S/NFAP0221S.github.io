@@ -9,12 +9,12 @@ interface props {
   };
 }
 
-export const generateStaticParams = async () => {
-  const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID as string;
-  if (!databaseId) {
-    throw new Error("NEXT_PUBLIC_NOTION_DATABASE_ID is not defined");
-  }
-  const posts = await getDatabase(databaseId);
+// export const generateStaticParams = async () => {
+//   const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID as string;
+//   if (!databaseId) {
+//     throw new Error("NEXT_PUBLIC_NOTION_DATABASE_ID is not defined");
+//   }
+//   const posts = await getDatabase(databaseId);
   // const paramsArray = [];
   // for (const post of posts) {
   //   const blocks = await getBlocks(post.id);
@@ -26,13 +26,13 @@ export const generateStaticParams = async () => {
   // return paramsArray;
   // console.log('### paramsArray', paraㅋmsArray)
   // console.log('### posts', posts)
-  return posts
-};
+  // return posts
+// };
 
 const Blog = async ({ params }: props) => {
-  const { id, page } = params;
-  const currentPage = parseInt(page, 10);
-  console.log('### params', params)
+  // const { id, page } = params;
+  // const currentPage = parseInt(page, 10);
+  // console.log('### params', params)
   // const pageData: any = await getPage(id);
   // const blocks: any = await getBlocks(id);
   // const postsProps = { id, initialBlocks: blocks, currentPage };

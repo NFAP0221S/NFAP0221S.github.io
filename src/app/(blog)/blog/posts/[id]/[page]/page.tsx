@@ -10,13 +10,17 @@ export const generateStaticParams = async () => {
     throw new Error("NEXT_PUBLIC_NOTION_DATABASE_ID is not defined");
   }
   const posts = await getDatabase(databaseId);
+  console.log('@@@ databaseId', databaseId)
+  console.log('@@@ posts', posts.length)
   const paramsArray = [];
   for (const post of posts) {
     const blocks = await getBlocks(post.id);
-    const totalPages = Math.ceil(blocks.length / 8);
+    console.log('@@@ blocks', blocks)
+    const totalPages = Math.ceil(blocks.length / 5);
     for (let page = 1; page <= totalPages; page++) {
       paramsArray.push({ id: post.id, page: page.toString() });
     }
+    console.log('@@@ paramsArray', paramsArray)
   }
   return paramsArray;
 }
