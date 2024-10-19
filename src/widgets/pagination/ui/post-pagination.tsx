@@ -2,21 +2,19 @@
 
 import React from "react";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/shared/ui/pagination";
+import { useRouter } from "next/navigation";
 
 interface PaginationProps {
   totalPages: number;
   currentPage: number;
-  // basePath: string;
   paginate: (pageNumber: number) => void;
 }
 
 export const PostPagination = ({
   totalPages,
   currentPage,
-  // basePath,
   paginate
 }: PaginationProps) => {
-
 
   return (
     <Pagination className="mt-8">

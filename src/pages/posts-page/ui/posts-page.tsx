@@ -1,11 +1,12 @@
 'use client'
 
-import React from "react";
+import React, { useState } from "react";
 import { PostPagination } from "@/widgets/pagination";
 import { PostCard } from "@/widgets/card";
 import { getBlocks } from "@/shared/lib/notion";
 import Link from "next/link";
 import { useSubCategory } from "@/app/provider/category-provider";
+import { usePathname, useRouter } from "next/navigation";
 
 interface PostsBlocksProps {
   id: string;
@@ -31,14 +32,25 @@ interface PostsBlocksProps {
 export const PostsPage = ({
   id,
   initialBlocks,
-  currentPage,
+  currentPage: initialPage,
 }: PostsBlocksProps) => {
   const { selectedSubCategory } = useSubCategory();
-  
+
   const itemsPerPage = 5;
   const totalPages = Math.ceil(initialBlocks.length / itemsPerPage);
-
   const reversedBlocks = [...initialBlocks].reverse();
+
+  const [currentPage, setCurrentPage] = useState(initialPage);
+
+  const router = useRouter();
+  const pathname = usePathname();
+  console.log('### pathname1', id)
+  console.log('### pathname2', pathname)
+  const basePath = `/blog/posts/${id}`;
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    router.push(`${basePath}/${pageNumber}`);
+  };
 
   const paginatedBlocks = reversedBlocks.slice(
     (currentPage - 1) * itemsPerPage,
@@ -47,39 +59,17 @@ export const PostsPage = ({
 
   return (
     <main className="flex-grow p-8 md:p-12 lg:p-8">
-      {/* <h1 className="text-4xl font-bold mb-6">Latest Blog Posts</h1> */}
       <h1 className="text-4xl font-bold mb-6">{selectedSubCategory}</h1>
       <div className="space-y-6">
         {paginatedBlocks.map((post) => (
           <PostCard key={post.id} {...post} blocks={post.blocks} />
         ))}
       </div>
-      {/* <PostPagination
+      <PostPagination
         paginate={paginate}
         currentPage={currentPage}
         totalPages={totalPages}
-      /> */}
+      />
     </main>
   );
-  // return (
-  //   <React.Fragment>
-  //     <ul className="grid grid-cols-1 sm:grid-cols-2 w-[80%]">
-  //       {paginatedBlocks.map((block: any, index: number) => (
-  //         <React.Fragment key={block.id}>
-  //           {block?.type === 'child_page' && (
-  //             // <li className="w-full sm:w-1/2 lg:w-1/3 p-2">
-  //             <li className={`p-2 w-full flex ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
-  //               {renderCards(block)}
-  //             </li>
-  //           )}
-  //         </React.Fragment>
-  //       ))}
-  //     </ul>
-  //     <div className="py-4 w-[80%]">
-  //       <div className="flex justify-center">
-  //         <PostPagination totalPages={totalPages} currentPage={currentPage} basePath={`/posts/${id}`} />
-  //       </div>
-  //     </div>
-  //   </React.Fragment>
-  // )
 };
