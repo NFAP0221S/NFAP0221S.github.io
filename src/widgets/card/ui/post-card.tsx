@@ -33,12 +33,12 @@ export const PostCard = (props: any) => {
   //   router.push(`/post/${id}`);
   // };
 
-  // const title = props.child_page.title
+  const title = props.child_page.title
 
   return (
     <Card className="w-full">
       <CardHeader>
-        {/* <CardTitle>{title}</CardTitle> */}
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground mb-2">
