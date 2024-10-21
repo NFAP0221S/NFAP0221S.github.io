@@ -9,14 +9,14 @@ import {
   CollapsibleTrigger,
 } from "@/shared/ui/collapsible";
 import { Button } from "@/shared/ui/button";
-import { useSubCategory } from "@/app/provider/category-provider";
+import { useCategory } from "@/app/provider/category-provider";
 
 interface SplitCategoriesProps {
   categoryList: NotionDB[];
 }
 
 export const Categories = ({ categoryList }: SplitCategoriesProps) => {
-  const { setSelectedSubCategory } = useSubCategory();
+  const { setSelectedSubCategory } = useCategory();
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null
   );

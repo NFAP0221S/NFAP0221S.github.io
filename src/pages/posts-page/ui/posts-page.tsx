@@ -5,7 +5,7 @@ import { PostPagination } from "@/widgets/pagination";
 import { PostCard } from "@/widgets/card";
 import { getBlocks } from "@/shared/lib/notion";
 import Link from "next/link";
-import { useSubCategory } from "@/app/provider/category-provider";
+import { useCategory } from "@/app/provider/category-provider";
 import { usePathname, useRouter } from "next/navigation";
 
 interface PostsBlocksProps {
@@ -34,7 +34,7 @@ export const PostsPage = ({
   initialBlocks,
   currentPage: initialPage,
 }: PostsBlocksProps) => {
-  const { selectedSubCategory } = useSubCategory();
+  const { selectedSubCategory } = useCategory();
 
   const itemsPerPage = 5;
   const totalPages = Math.ceil(initialBlocks.length / itemsPerPage);
@@ -43,9 +43,6 @@ export const PostsPage = ({
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   const router = useRouter();
-  const pathname = usePathname();
-  console.log('### pathname1', id)
-  console.log('### pathname2', pathname)
   const basePath = `/blog/posts/${id}`;
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);

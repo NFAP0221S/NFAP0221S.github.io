@@ -2,35 +2,41 @@
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-interface SubCategoryContextType {
+interface CategoryContextType {
+  selectedCategory: string | null;
+  setSelectedCategory: (category: string) => void;
   selectedSubCategory: string | null;
   setSelectedSubCategory: (subcategory: string) => void;
 }
 
-const SubCategoryContext = createContext<SubCategoryContextType | undefined>(
+const CategoryContext = createContext<CategoryContextType | undefined>(
   undefined
 );
 
-export const SubCategoryProvider = ({ children }: { children: ReactNode }) => {
+export const CategoryProvider = ({ children }: { children: ReactNode }) => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(
     null
   );
 
   return (
-    <SubCategoryContext.Provider
-      value={{ selectedSubCategory, setSelectedSubCategory }}
+    <CategoryContext.Provider
+      value={{
+        selectedCategory,
+        setSelectedCategory,
+        selectedSubCategory,
+        setSelectedSubCategory,
+      }}
     >
       {children}
-    </SubCategoryContext.Provider>
+    </CategoryContext.Provider>
   );
 };
 
-export const useSubCategory = () => {
-  const context = useContext(SubCategoryContext);
+export const useCategory = () => {
+  const context = useContext(CategoryContext);
   if (context === undefined) {
-    throw new Error(
-      "useSubCategory must be used within a SubCategoryProvider"
-    );
+    throw new Error("useCategory must be used within a CategoryProvider");
   }
   return context;
 };
