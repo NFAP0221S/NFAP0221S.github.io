@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import ThemeProvider from "./provider/theme-provider";
 import NextUiProvider from "./provider/next-ui-provider";
-import { CategoryProvider } from "./provider/category-provider";
+import { SubCategoryProvider } from "./provider/category-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,10 +31,10 @@ const RootLayout = ({
           enableSystem
           disableTransitionOnChange
         >
-          <CategoryProvider>
+          <SubCategoryProvider>
             {/* <NextUiProvider> */}
             <main className={inter.className}>{children}</main>
-          </CategoryProvider>
+          </SubCategoryProvider>
           {/* </NextUiProvider> */}
         </ThemeProvider>
       </body>

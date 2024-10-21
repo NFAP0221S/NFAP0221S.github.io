@@ -16,7 +16,7 @@ interface SplitCategoriesProps {
 }
 
 export const Categories = ({ categoryList }: SplitCategoriesProps) => {
-  const { setSelectedSubCategory, setSelectedCategory } = useCategory();
+  const { setSelectedSubCategory } = useCategory();
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null
   );
@@ -97,11 +97,7 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
                 key={subcategory.id}
                 variant="ghost"
                 className="w-full justify-start"
-                onClick={() => {
-                    setSelectedCategory(`${category.title} ${subcategory.title}`)
-                    setSelectedSubCategory(subcategory.title)
-                  }
-                }
+                onClick={() => setSelectedSubCategory(subcategory.title)}
               >
                 <Link
                   href={`/blog/posts/${subcategory.id}/1`}

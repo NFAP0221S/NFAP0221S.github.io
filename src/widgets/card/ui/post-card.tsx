@@ -1,5 +1,6 @@
 "use client";
 
+import { useCategory } from "@/app/provider/category-provider";
 import {
   Card,
   CardContent,
@@ -22,6 +23,7 @@ interface CardProps {
 
 export const PostCard = (props: any) => {
 // export const PostCard = (props: CardProps) => {
+  const { selectedCategory } = useCategory();
   // const { id, title, date, category, excerpt, blocks } = props
   // const router = useRouter();
   // const text = blocks[1]?.paragraph?.rich_text[0]?.plain_text;
@@ -34,7 +36,7 @@ export const PostCard = (props: any) => {
   // };
 
   const title = props.child_page.title
-
+  console.log('### blocks', props.blocks)
   return (
     <Card className="w-full">
       <CardHeader>
@@ -43,7 +45,7 @@ export const PostCard = (props: any) => {
       <CardContent>
         <p className="text-sm text-muted-foreground mb-2">
           {/* {dateSlcie} | {category} */}
-          {dateSlcie} | {'category'}
+          {dateSlcie} | {selectedCategory}
         </p>
         {/* <p>{excerpt}</p> */}
       </CardContent>
