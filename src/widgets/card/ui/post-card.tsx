@@ -51,7 +51,7 @@ export const PostCard = (props: any) => {
       </CardContent>
       <CardFooter>
         <Link
-          href={`/blog/${props.id}`}
+          href={`/blog/post/${props.id}`}
           className="text-primary hover:underline"
         >
           Read more
