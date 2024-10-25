@@ -36,7 +36,7 @@ export const PostCard = (props: any) => {
   // };
 
   const title = props.child_page.title
-  console.log('### blocks', props.blocks)
+
   return (
     <Card className="w-full">
       <CardHeader>

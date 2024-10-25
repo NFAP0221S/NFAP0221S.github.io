@@ -12,22 +12,22 @@ export const generateStaticParams = async () => {
       return {
         id: post.id,
         blockIds: blocks
-          .filter((block: any) => block?.type === 'child_page') // child_page 타입인 블록들만 필터링
-          .map(block => block.id) // 필터된 블록들의 ID만 추출
+          .filter((block: any) => block?.type === "child_page") // child_page 타입인 블록들만 필터링
+          .map((block) => block.id), // 필터된 블록들의 ID만 추출
       };
     })
   );
 
-  return postDetails.flatMap((postDetail) => 
-    postDetail.blockIds.map(blockId => ({
-      id: blockId
+  return postDetails.flatMap((postDetail) =>
+    postDetail.blockIds.map((blockId) => ({
+      id: blockId,
     }))
   );
-}
+};
 
 const Post = async ({ params }: any) => {
   const { id } = params;
-  
+
   const page: any = await getPage(id);
   const blocks = await getBlocks(id);
 
@@ -38,6 +38,6 @@ const Post = async ({ params }: any) => {
   const postProps = { page, blocks };
 
   return <PostPage {...postProps} />;
-}
+};
 
 export default Post;

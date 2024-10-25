@@ -73,9 +73,6 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
     });
   }, [allMainCategory, getSubCategories]);
 
-  console.log("### accordionItems", accordionItems);
-  console.log("### allMainCategory", allMainCategory);
-
   return (
     <div className="space-y-1">
       {accordionItems.map((category) => (
