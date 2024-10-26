@@ -1,16 +1,23 @@
+'use client'
+
+import { NotionBlock } from "@/shared/types/notion";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface ParagraphProps {
-  content: any[]; // richTextArray 형태의 데이터 사용
+  block: NotionBlock; // richTextArray 형태의 데이터 사용
   className?: string;
 }
 
-export const Paragraph = ({ content, className }: ParagraphProps) => (
-  <p className={twMerge("mb-4 text-gray-700 dark:text-gray-300", className)}>
-    {renderRichText(content)}
-  </p>
-);
+export const Paragraph = ({ block, className }: ParagraphProps) => {
+  console.log("### paragraph", block);
+
+  return (
+    <p className={twMerge("mb-4 text-gray-700 dark:text-gray-300", className)}>
+      {renderRichText(block.paragraph?.rich_text)}
+    </p>
+  );
+};
 
 // renderRichText 함수 재사용
 const renderRichText = (richTextArray: any[]) => {

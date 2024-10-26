@@ -63,7 +63,7 @@ export const PostPage = ({ page, blocks }: PostBlocksProps) => {
   const BlockRenderer = ({ block }: { block: NotionBlock }) => {
     switch (block.type) {
       case "paragraph":
-        return <Paragraph content={block.content || ""} />;
+        return <Paragraph block={block || ""} />;
       case "heading_1":
         return <Heading1 content={block.content || ""} />;
       case "heading_2":
