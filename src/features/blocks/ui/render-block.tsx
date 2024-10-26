@@ -35,10 +35,10 @@ export const RenderBlock = ({ blocks }: RenderBlockProps) => {
   };
 
   const renderRichText = (richTextArray: any[]) => {
-    richTextArray?.map((text, index) => {
+    // richTextArray?.map((text, index) => {
       // console.log('rich text:', text)
       // console.log('rich index:', text)
-    });
+    // });
     if (!richTextArray || richTextArray.length === 0) { // null 또는 undefined인 경우 처리
       // console.log('길이xxxx')
       return <br/>
@@ -145,7 +145,6 @@ export const RenderBlock = ({ blocks }: RenderBlockProps) => {
         return <div>Unsupported block type: {block?.type}</div>;
     }
   };
-  
 
   return (
     <React.Fragment>
