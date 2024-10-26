@@ -17,7 +17,7 @@ import {
   TableBlock,
   ToDo,
   Toggle,
-} from "@/widgets/block";
+} from "@/widgets/blocks";
 import { Button } from "@/shared/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
