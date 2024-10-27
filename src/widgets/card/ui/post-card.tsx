@@ -12,7 +12,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 interface CardProps {
-  
   // id: number;
   // title: string;
   // date: string;
@@ -22,20 +21,24 @@ interface CardProps {
 }
 
 export const PostCard = (props: any) => {
-// export const PostCard = (props: CardProps) => {
+  // export const PostCard = (props: CardProps) => {
   const { selectedCategory } = useCategory();
   // const { id, title, date, category, excerpt, blocks } = props
   // const router = useRouter();
   // const text = blocks[1]?.paragraph?.rich_text[0]?.plain_text;
   // const shortText = text ? text.substring(0, 8) : '';
   // const dateSlcie = date ? date.substring(0, 10) : "";
-  const dateSlcie = props.last_edited_time ? props.last_edited_time.substring(0, 10) : "";
+  const dateSlcie = props.last_edited_time
+    ? props.last_edited_time.substring(0, 10)
+    : "";
 
   // const handleButtonClick = () => {
   //   router.push(`/post/${id}`);
   // };
 
-  const title = props.child_page.title
+  const title = props?.child_page?.title;
+
+  if (!title) return null;
 
   return (
     <Card className="w-full">
