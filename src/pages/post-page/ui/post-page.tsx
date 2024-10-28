@@ -8,9 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import {
   BulletedListItem,
   CodeBlock,
-  Heading1,
-  Heading2,
-  Heading3,
+  Heading,
   ImageBlock,
   NumberedListItem,
   Paragraph,
@@ -65,11 +63,9 @@ export const PostPage = ({ page, blocks }: PostBlocksProps) => {
       case "paragraph":
         return <Paragraph block={block || ""} />;
       case "heading_1":
-        return <Heading1 content={block.content || ""} />;
       case "heading_2":
-        return <Heading2 content={block.content || ""} />;
       case "heading_3":
-        return <Heading3 content={block.content || ""} />;
+        return <Heading block={block || ""} />;
       case "bulleted_list_item":
         return <BulletedListItem content={block.content || ""} />;
       case "numbered_list_item":

@@ -5,9 +5,35 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface ParagraphProps {
-  block: NotionBlock; // richTextArray 형태의 데이터 사용
+  block: ParagraphBlock; // richTextArray 형태의 데이터 사용
   className?: string;
 }
+
+export type RichText = {
+  type: 'text';
+  text: {
+    content: string;
+    link: string | null;
+  };
+  annotations: {
+    bold: boolean;
+    italic: boolean;
+    strikethrough: boolean;
+    underline: boolean;
+    code: boolean;
+    color: string;
+  };
+  plain_text: string;
+  href: string | null;
+};
+
+export type ParagraphBlock = {
+  type: 'paragraph';
+  paragraph: {
+    rich_text: RichText[];
+    color: string;
+  };
+};
 
 export const Paragraph = ({ block, className }: ParagraphProps) => {
   console.log("### paragraph", block);
