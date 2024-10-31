@@ -1,21 +1,6 @@
-// 'use client'
-
 import React from "react";
 import { NotionBlock } from "@/shared/types/notion";
-import { PostHeader } from "@/widgets/header";
-import { RenderBlock } from "@/features/blocks";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
-import {
-  BulletedListItem,
-  CodeBlock,
-  Heading,
-  ImageBlock,
-  NumberedListItem,
-  Paragraph,
-  TableBlock,
-  ToDo,
-  Toggle,
-} from "@/widgets/blocks";
+import { BlockRenderer } from "@/features/blocks";
 import { Button } from "@/shared/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -58,35 +43,6 @@ export const PostPage = ({ page, blocks }: PostBlocksProps) => {
   // const title = page?.properties['이름']?.title?.[0]?.plain_text || page?.properties.title.title[0].plain_text
   const title = page?.properties.title.title[0].plain_text;
 
-  const BlockRenderer = ({ block }: { block: NotionBlock }) => {
-    switch (block.type) {
-      case "paragraph":
-        return <Paragraph block={block || ""} />;
-      case "heading_1":
-      case "heading_2":
-      case "heading_3":
-        return <Heading block={block || ""} />;
-      case "bulleted_list_item":
-        return <BulletedListItem content={block.content || ""} />;
-      case "numbered_list_item":
-        return <NumberedListItem content={block.content || ""} />;
-      case "to_do":
-        return <ToDo content={block.content || ""} checked={block.checked} />;
-      case "toggle":
-        return <Toggle content={block.content || ""} />;
-      case "image":
-        return <ImageBlock url={block.url || ""} />;
-      case "code":
-        return (
-          <CodeBlock content={block.content || ""} language={block.language} />
-        );
-      case "table":
-        return block.table ? <TableBlock table={block.table} /> : null;
-      default:
-        return null;
-    }
-  };
-  console.log("### blocks", blocks);
   return (
     <main className="flex-1 p-6">
       <div className="max-w-3xl mx-auto">
@@ -101,7 +57,6 @@ export const PostPage = ({ page, blocks }: PostBlocksProps) => {
             {/* {post.date} | {post.category} */}
             {"2024-06-01"} | {"react"}
           </p>
-          {/* <RenderBlock blocks={blocks} /> */}
           {blocks.map((block) => (
             <BlockRenderer key={block.id} block={block} />
           ))}

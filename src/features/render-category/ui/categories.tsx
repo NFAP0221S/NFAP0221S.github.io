@@ -98,6 +98,8 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
               >
                 <Link
                   href={`/blog/posts/${subcategory.id}/1`}
+                  shallow={true}
+                  prefetch={true}
                   // href={`/blog/posts/${category.title.toLowerCase()}/${subcategory.title
                   //   .toLowerCase()
                   //   .replace(" ", "-")}`}

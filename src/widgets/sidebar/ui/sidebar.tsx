@@ -2,13 +2,6 @@
 
 import { Categories } from "@/features/render-category";
 import { CatListProps } from "@/shared/types/component";
-import { Button } from "@/shared/ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/shared/ui/collapsible";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 // import { SidebarHeader } from "./sidebar-header";
