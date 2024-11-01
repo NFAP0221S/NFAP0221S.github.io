@@ -17,7 +17,7 @@ export const CodeBlock = ({
   return (
     <pre
       className={twMerge(
-        "bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-4 overflow-x-auto",
+        "bg-gray-100 dark:bg-gray-800 p-4 rounded-lg m-4 overflow-x-auto",
         className
       )}
     >
