@@ -96,10 +96,7 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
                 className="w-full justify-start"
                 onClick={() => setSelectedSubCategory(subcategory.title)}
               >
-                <Link
-                  href={`/blog/posts/${subcategory.id}/1`}
-                  shallow={true}
-                  prefetch={true}
+                <Link href={`/blog/posts/${subcategory.id}/1`} shallow prefetch
                   // href={`/blog/posts/${category.title.toLowerCase()}/${subcategory.title
                   //   .toLowerCase()
                   //   .replace(" ", "-")}`}
