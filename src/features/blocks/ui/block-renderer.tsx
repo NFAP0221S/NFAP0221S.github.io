@@ -32,7 +32,7 @@ export const BlockRenderer = ({ block }: NotionBlock) => {
       return <ImageBlock url={block.url || ""} />;
     case "code":
       return (
-        <CodeBlock content={block.content || ""} language={block.language} />
+        <CodeBlock block={block || ""} language={block.language} />
       );
     case "table":
       return block.table ? <TableBlock table={block.table} /> : null;
