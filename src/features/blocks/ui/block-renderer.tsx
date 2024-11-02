@@ -39,13 +39,13 @@ export const BlockRenderer = ({ block }: NotionBlock) => {
     case "heading_3":
       return <Heading block={block || ""} />;
     case "bulleted_list_item":
-      return <BulletedListItem content={block.content || ""} />;
+      return <BulletedListItem block={block || ""} />;
     case "numbered_list_item":
-      return <NumberedListItem content={block.content || ""} />;
+      return <NumberedListItem block={block || ""} />;
     case "to_do":
       return <ToDo content={block.content || ""} checked={block.checked} />;
     case "toggle":
-      return <Toggle block={block} />;
+      return <Toggle block={block || ""} />;
     case "image":
       return <ImageBlock url={block.url || ""} />;
     case "code":
