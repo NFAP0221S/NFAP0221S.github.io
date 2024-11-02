@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { getBlocks } from "@/shared/lib/notion";
-import { BlockRenderer } from "@/features/blocks"; // BlockRenderer 임포트
+import { BlockRenderer } from "@/features/blocks";
 import { NotionBlock } from "@/shared/types/notion";
 
 export const NumberedListItem = async ({

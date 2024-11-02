@@ -1,10 +1,8 @@
-// 'use client'
-
 import { getBlocks } from "@/shared/lib/notion";
 import { NotionBlock } from "@/shared/types/notion";
 import { twMerge } from "tailwind-merge";
 import { renderRichText } from "@/widgets/blocks/ui/rich-text";
-import { BlockRenderer } from "@/features/blocks"; // BlockRenderer 불러오기
+import { BlockRenderer } from "@/features/blocks";
 
 export const BulletedListItem = async ({
   block,
