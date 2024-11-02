@@ -21,7 +21,7 @@ export type RichText = {
 };
 
 // renderRichText 함수 수정
-export const renderRichText = (richTextArray: RichText[], block: NotionBlock) => {
+export const renderRichText = (richTextArray: RichText[], block?: NotionBlock) => {
   if (!richTextArray || richTextArray.length === 0) {
     return <br />;
   }
@@ -37,8 +37,6 @@ export const renderRichText = (richTextArray: RichText[], block: NotionBlock) =>
       underline ? "underline" : "",
       code ? "bg-gray-100 dark:bg-gray-800 p-1 rounded" : ""
     );
-
-    // console.log("### Paragraph", block);
 
     return (
       <React.Fragment key={`rich-text-${index}`}>

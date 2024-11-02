@@ -13,7 +13,6 @@ export const CodeBlock = ({
   className?: string;
 }) => {
 
-  console.log("### code block", block);
   return (
     <pre
       className={twMerge(
