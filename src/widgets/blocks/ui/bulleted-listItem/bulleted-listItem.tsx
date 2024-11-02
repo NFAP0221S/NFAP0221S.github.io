@@ -22,7 +22,7 @@ export const BulletedListItem = async ({
       id="bulleted-list-item"
     >
       {renderRichText(block.bulleted_list_item?.rich_text)}
-      
+
       {/* 자식 블록이 있을 경우 중첩된 목록으로 렌더링 */}
       {children && (
         <ul className="ml-6 mt-2">
