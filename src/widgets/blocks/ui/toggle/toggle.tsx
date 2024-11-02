@@ -9,7 +9,7 @@ export const Toggle = async ({ block, className }: { block: NotionBlock; classNa
   const children = block.has_children ? await getBlocks(block.id) : null;
 
   return (
-    <details className={twMerge("mb-4", className)}>
+    <details className={twMerge("mb-4", className)} id="toggle">
       <summary className="cursor-pointer text-gray-800 dark:text-gray-200">
         {renderRichText(block.toggle?.rich_text)}
       </summary>

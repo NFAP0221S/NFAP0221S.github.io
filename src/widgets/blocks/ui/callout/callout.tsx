@@ -1,5 +1,3 @@
-// "use client";
-
 import Image from "next/image";
 import { Info } from "lucide-react";
 import { twMerge } from "tailwind-merge";
@@ -36,6 +34,7 @@ export const Callout = async ({
         `flex items-start p-4 m-2 border rounded-md ${colorClasses}`,
         className
       )}
+      id="callout"
     >
       {/* 아이콘 */}
       <div className="flex-shrink-0 mr-3">

@@ -18,7 +18,6 @@ import {
   Embed,
   Bookmark
 } from "@/widgets/blocks";
-import { getBlocks } from "@/shared/lib/notion";
 
 export const BlockRenderer = ({ block }: NotionBlock) => {
 
