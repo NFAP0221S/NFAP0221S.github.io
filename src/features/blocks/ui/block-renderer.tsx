@@ -47,7 +47,7 @@ export const BlockRenderer = ({ block }: NotionBlock) => {
     case "toggle":
       return <Toggle block={block || ""} />;
     case "image":
-      return <ImageBlock url={block.url || ""} />;
+      return <ImageBlock block={block || ""} />;
     case "code":
       return <CodeBlock block={block || ""} language={block.language} />;
     case "callout":
