@@ -4,7 +4,6 @@ import { Categories } from "@/features/render-category";
 import { CatListProps } from "@/shared/types/component";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-// import { SidebarHeader } from "./sidebar-header";
 
 export const Sidebar = ({ categoryList }: CatListProps) => {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
