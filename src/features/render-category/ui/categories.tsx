@@ -90,20 +90,23 @@ export const Categories = ({ categoryList }: SplitCategoriesProps) => {
           </CollapsibleTrigger>
           <CollapsibleContent className="pl-4">
             {category.subTitles.map((subcategory) => (
-              <Button
-                key={subcategory.id}
-                variant="ghost"
-                className="w-full justify-start"
+              <Link
+                href={`/blog/posts/${subcategory.id}/1`}
+                shallow
+                prefetch
                 onClick={() => setSelectedSubCategory(subcategory.title)}
+                // href={`/blog/posts/${category.title.toLowerCase()}/${subcategory.title
+                //   .toLowerCase()
+                //   .replace(" ", "-")}`}
               >
-                <Link href={`/blog/posts/${subcategory.id}/1`} shallow prefetch
-                  // href={`/blog/posts/${category.title.toLowerCase()}/${subcategory.title
-                  //   .toLowerCase()
-                  //   .replace(" ", "-")}`}
+                <Button
+                  key={subcategory.id}
+                  variant="ghost"
+                  className="w-full justify-start"
                 >
                   {subcategory.title}
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             ))}
           </CollapsibleContent>
         </Collapsible>
