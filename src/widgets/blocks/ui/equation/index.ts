@@ -1,1 +1,0 @@
-export { Equation } from "./equation";
